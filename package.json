@@ -1,0 +1,24 @@
+{
+  "name": "bp-media-project",
+  "version": "0.0.1",
+  "description": "BP -present recommendation service",
+  "main": "app.js",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "lite-server": "^2.5.4",
+    "sw-precache": "^5.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server --open=./docs/"
+  },
+  "author": "Shinyoung",
+  "license": "MIT"
+}
