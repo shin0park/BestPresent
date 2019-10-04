@@ -4,9 +4,10 @@
   "description": "BP -present recommendation service",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
     "start": "nodemon ./src/app.js",
-    "dev": "lite-server"
+    "dev-pwa": "lite-server",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -24,11 +25,16 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "css-loader": "^3.2.0",
     "ejs": "^2.7.1",
     "lite-server": "^2.5.4",
     "nodemon": "^1.19.3",
     "sw-precache": "^5.2.1",
+    "vue-loader": "^15.7.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
   }
 }

@@ -1,7 +1,4 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import Login from './views/Login';
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+new Vue(Login).$mount('#root');
