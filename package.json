@@ -4,10 +4,10 @@
   "description": "BP -present recommendation service",
   "main": "app.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --watch",
     "start": "nodemon ./src/app.js",
     "dev-pwa": "lite-server",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --hot"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "firebase": "^7.1.0",
     "morgan": "^1.9.1",
     "vue": "^2.6.10"
   },

@@ -4,12 +4,27 @@ const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
+// const firebase = require("firebase/app");
+//
+// require("firebase/auth");
+// require("firebase/firestore");
+// require('dotenv').config();
 
-require('dotenv').config();
-
-//const authRouter = require('./routes/auth');
+const authRouter = require('./routes/auth');
 
 const app = express();
+
+// const firebaseConfig = {
+//     apiKey: "AIzaSyBXqeyMIREFSAUYDgxiqTQWJlj4ImZ3Qc8",
+//     authDomain: "bp-best-present.firebaseapp.com",
+//     databaseURL: "https://bp-best-present.firebaseio.com",
+//     projectId: "bp-best-present",
+//     storageBucket: "bp-best-present.appspot.com",
+//     messagingSenderId: "724917200850",
+//     appId: "1:724917200850:web:ebdfda6368b7e776410a0b",
+//     measurementId: "G-H66P8S16WK"
+// };
+// firebase.initializeApp(firebaseConfig);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -17,6 +32,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('port', process.env.PORT || 3000);
 
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -31,10 +47,11 @@ app.use(session({
 }));
 app.use(flash());
 
-//router
-app.get('/', function (req, res, next) {
+app.get('/', function (req, res) {
     res.render('main');
 });
+
+app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
     const err = new Error('Not Found');
