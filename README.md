@@ -1,18 +1,2 @@
-# bestpresent
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# BestPresent
+머신러닝을 이용한 선물추천서비스 - PWA기술을 사용한  vue, node 기반 웹 어플리케이션
