@@ -3,6 +3,17 @@
   "version": "0.0.1",
   "description": "BP -present recommendation service",
   "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/app.js",
+    "dev": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shin0park/BestPresent-Pwa.git"
+  },
+  "author": "Shinyoung",
+  "license": "MIT",
   "dependencies": {
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
@@ -12,13 +23,10 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "ejs": "^2.7.1",
     "lite-server": "^2.5.4",
+    "nodemon": "^1.19.3",
     "sw-precache": "^5.2.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "lite-server --open=./docs/"
-  },
-  "author": "Shinyoung",
-  "license": "MIT"
+  }
+
 }

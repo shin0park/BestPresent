@@ -2,7 +2,7 @@
 var CACHE_NAME = 'pwa-offline-v1';
 // 캐싱할 파일 목록
 var filesToCache = [
-    '/', //index.html도 포함
+    '/',
     '/css/app.css',
     '/images/icons/192px.png',
     '/images/icons/512px.png',
