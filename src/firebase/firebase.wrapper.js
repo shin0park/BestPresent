@@ -1,14 +1,16 @@
 import firebase from 'firebase';
+import dotenv from 'dotenv'
 
+dotenv.config();
 const config = {
-  apiKey: "AIzaSyBXqeyMIREFSAUYDgxiqTQWJlj4ImZ3Qc8",
-  authDomain: "bp-best-present.firebaseapp.com",
-  databaseURL: "https://bp-best-present.firebaseio.com",
-  projectId: "bp-best-present",
-  storageBucket: "bp-best-present.appspot.com",
-  messagingSenderId: "724917200850",
-  appId: "1:724917200850:web:ebdfda6368b7e776410a0b",
-  measurementId: "G-H66P8S16WK"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 firebase.initializeApp(config);
 
@@ -27,6 +29,26 @@ const authModule = {
   googleLogin: async () => await resources.auth.signInWithPopup(resources.provider),
   facebookLogin: async() => await firebase.auth().signInWithPopup(providerFB)
 };
+const dataModule = {
+  addUser: async (email, name) => {
+    await resources.database.collection('Users').doc(email).set({
+      email: email,
+      name: name
+    });
+  },
+  readUser: async (email) => {
+    try {
+      const doc = await resources.database.collection('Users').doc(email).get();
+      if (!doc.exists) {
+        return null;
+      } else {
+        return doc.data();
+      }
 
+    } catch (e) {
+      return e;
+    }
+  },
+}
 
-export { authModule};
+export { authModule, dataModule};

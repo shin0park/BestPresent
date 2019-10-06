@@ -1,13 +1,16 @@
 import Vue from 'vue';
 import Login from './views/Login';
-import { authModule } from './firebase/firebase.wrapper';
+import { authModule, dataModule} from './firebase/firebase.wrapper';
 
 
 Vue.prototype.$auth = authModule;
-
+Vue.prototype.$api = dataModule;
 Vue.prototype.$user = {
-    email: '0108257@gmail.com',
+    email: '',
     login: false,
+    displayName: '',
+    gender: '',
+    age: -1,
 };
 
 new Vue(Login).$mount('#root');

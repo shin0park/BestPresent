@@ -8,7 +8,7 @@ const flash = require('connect-flash');
 //
 // require("firebase/auth");
 // require("firebase/firestore");
-// require('dotenv').config();
+require('dotenv').config();
 
 const authRouter = require('./routes/auth');
 
