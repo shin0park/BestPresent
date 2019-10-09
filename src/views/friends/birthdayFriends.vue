@@ -15,10 +15,10 @@
         },
         computed: {
             birthdayName() {
-                return this.$store.state.birthdayList[this.birthdayIndex].name;
+                return this.$user.birthday_list[this.birthdayIndex].name;
             },
             profileImg() {
-                return this.$store.state.birthdayList[this.birthdayIndex].friendProfile;
+                return this.$user.birthday_list[this.birthdayIndex].profile;
             }
         },
         methods: {

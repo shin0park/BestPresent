@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import dotenv from 'dotenv'
+import profile_img from './assets/defalut_profile.png';
 
 dotenv.config();
 const config = {
@@ -33,7 +34,9 @@ const dataModule = {
   addUser: async (email, name) => {
     await resources.database.collection('Users').doc(email).set({
       email: email,
-      name: name
+      name: name,
+      birth: '생일을 입력해주세요.',
+      profile: profile_img,
     });
   },
   readUser: async (email) => {

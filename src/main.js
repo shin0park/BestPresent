@@ -19,9 +19,10 @@ Vue.prototype.$user = {
     displayName: '',
     gender: '',
     age: -1,
-    birth:'',
+    birth:'생일을 입력해주세요',
     profile: profile_img,
     present_list: [],
+    friends_list: [],
     birthday_list:[],
 };
 

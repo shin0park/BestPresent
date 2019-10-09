@@ -67,6 +67,10 @@
             onClickAddFriend() {
 
             },
+        },
+        async mounted() {
+            const user_data = await this.$api.readUser(this.$user.email);
+            this.$user.profile = user_data.profile;
         }
     }
 </script>
@@ -78,14 +82,17 @@
         width: 100%;
         box-sizing: border-box;
     }
+
     .titleBox::after {
         display: block;
         content: "";
         clear: both;
     }
+
     .titleBox {
         margin-bottom: 16px;
     }
+
     .title {
         margin: 0 0 0 10px;
         font-size: 21px;

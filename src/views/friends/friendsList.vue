@@ -18,14 +18,14 @@
         },
         computed: {
             friendsName() {
-                return this.$store.state.friendsList[this.friendsIndex].name;
+                return this.$user.friends_list[this.friendsIndex].name;
             },
             profileImg() {
-                return this.$store.state.friendsList[this.friendsIndex].friendProfile;
+                return this.$user.friends_list[this.friendsIndex].profile;
             },
             searching() {
-                const frinedName = this.$store.state.friendsList[this.friendsIndex].name;
-                if(frinedName.includes(this.searchValue)) {
+                const friendName = this.$user.friends_list[this.friendsIndex].name;
+                if(friendName.includes(this.searchValue)) {
                     return true
                 } else {
                     return false
