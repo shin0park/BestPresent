@@ -1,9 +1,10 @@
 import Vue from 'vue';
-import App from './views/App'
-import router from './router'
-import store from './store'
+import App from './views/App';
+import router from './router';
+import store from './store';
 import { authModule, dataModule} from './firebase/firebase.wrapper';
-import Router from 'vue-router'
+import Router from 'vue-router';
+import profile_img from './assets/defalut_profile.png';
 
 const routerPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
@@ -18,6 +19,10 @@ Vue.prototype.$user = {
     displayName: '',
     gender: '',
     age: -1,
+    birth:'',
+    profile: profile_img,
+    present_list: [],
+    birthday_list:[],
 };
 
 new Vue({
