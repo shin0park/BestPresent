@@ -21,6 +21,11 @@ module.exports = {
                 'vue-style-loader',
                 'css-loader',
             ]
+        },{
+            test: /\.(png|jpg)$/,
+            loader: [
+                'file-loader'
+            ]
         }],
     },
     node: { fs: 'empty' },
