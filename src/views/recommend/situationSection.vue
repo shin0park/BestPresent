@@ -20,8 +20,8 @@
     export default {
         data() {
             return {
-                situations: [{icon: 'cake', name: '생일'}, {icon: 'favorite', name: '연인'},{icon: 'favorite', name: '연인'},{icon: 'favorite', name: '연인'},
-                    {icon: 'cake', name: '생일'}, {icon: 'favorite', name: '연인'},{icon: 'favorite', name: '연인'},{icon: 'favorite', name: '연인'},]
+                situations: [{icon: 'cake', name: '생일'}, {icon: 'favorite', name: '기념일(애인)'},{icon: 'school', name: '입학/졸업'},{icon: 'house', name: '결혼/집들이'},
+                    {icon: 'child_care', name: '출산/임신'}, {icon: 'money_off', name: '저렴한 선물'},{icon: 'monetization_on', name: '고급 선물'},{icon: 'notifications', name: '크리스마스'},]
             }
         },
         methods: {
@@ -62,11 +62,12 @@
         margin-bottom: 10px;
         font-size: 12px;
         font-weight: 700;
+        color: #212121;
         text-align: center;
         box-sizing: border-box;
     }
     .situationList .material-icons {
         margin-bottom: 10px;
-        color: #757575;
+        color: #212121;
     }
 </style>
