@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="situationSection">
-            <h1 class="title">어떤 선물을 찾으시나요?</h1>
+            <h1 class="title">{{title}}</h1>
             <div class="situationBox">
                 <ul>
                     <li class="situationList" v-for="situation in situations" v-on:click="onClickSituation(situation.name)">
@@ -20,13 +20,15 @@
     export default {
         data() {
             return {
+                title: "sdfhhhhdsfds",
                 situations: [{icon: 'cake', name: '생일'}, {icon: 'favorite', name: '기념일(애인)'},{icon: 'school', name: '입학/졸업'},{icon: 'house', name: '결혼/집들이'},
-                    {icon: 'child_care', name: '출산/임신'}, {icon: 'money_off', name: '저렴한 선물'},{icon: 'monetization_on', name: '고급 선물'},{icon: 'notifications', name: '크리스마스'},]
+                        {icon: 'child_care', name: '출산/임신'}, {icon: 'money_off', name: '저렴한 선물'},{icon: 'monetization_on', name: '고급 선물'},{icon: 'notifications', name: '크리스마스'},]
             }
         },
         methods: {
             onClickSituation(n) {
-                alert(n);
+                window.scrollTo(0,0);
+                this.$router.push({name: 'situationPage'})
             }
         }
     }

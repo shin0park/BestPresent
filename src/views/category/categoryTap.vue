@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    import situationSection from '../recommend/situationSection'
-    import rankSection from '../recommend/rankSection'
+    import situationSection from './situationSection'
+    import rankSection from './rankSection'
     export default {
         components: {
             'situationSection': situationSection,

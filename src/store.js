@@ -43,7 +43,7 @@ export default new Vuex.Store({
             },
             {
                 name: '박신영',
-                friendProfile: 'https://en.pimg.jp/023/182/267/1/23182267.jpg',
+                friendProfile: 'https://en.pimg.jp/023/182/267/recommend/23182267.jpg',
                 birthday: '11-01',
                 presentlist: [{
                     itemName: "스마일 운동화",
@@ -71,7 +71,7 @@ export default new Vuex.Store({
             },
             {
                 name: '박신영',
-                friendProfile: 'https://en.pimg.jp/023/182/267/1/23182267.jpg',
+                friendProfile: 'https://en.pimg.jp/023/182/267/recommend/23182267.jpg',
                 birthday: '06-20',
                 presentlist: [{
                     itemName: "스마일 운동화",
@@ -99,7 +99,7 @@ export default new Vuex.Store({
             },
             {
                 name: '박신영',
-                friendProfile: 'https://en.pimg.jp/023/182/267/1/23182267.jpg',
+                friendProfile: 'https://en.pimg.jp/023/182/267/recommend/23182267.jpg',
                 birthday: '03-02',
                 presentlist: [{
                     itemName: "스마일 운동화",
@@ -129,7 +129,7 @@ export default new Vuex.Store({
             },
             {
                 name: '박신영',
-                friendProfile: 'https://en.pimg.jp/023/182/267/1/23182267.jpg',
+                friendProfile: 'https://en.pimg.jp/023/182/267/recommend/23182267.jpg',
                 birthday: '10-09',
                 presentlist: [{
                     itemName: "스마일 운동화",

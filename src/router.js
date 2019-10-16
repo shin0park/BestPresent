@@ -5,6 +5,7 @@ import recommendTap from "./views/recommend/recommendTap"
 import categoryTap from "./views/category/categoryTap"
 import userProfile from "./views/friends/userProfile"
 import friendProfile from "./views/friends/friendProfile"
+import situationPage from "./views/category/situationPage"
 Vue.use(VueRouter);
 //
 export default new VueRouter({
@@ -35,6 +36,11 @@ export default new VueRouter({
             path: '/friendProfile',
             component: friendProfile,
             props: true
+        },
+        {
+            name: 'situationPage',
+            path: './situationPage',
+            component: situationPage
         }
     ]
 })

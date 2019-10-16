@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import dotenv from 'dotenv'
-import profile_img from './assets/defalut_profile.png';
+import profile_img from '../assets/defalut_profile.png';
 
 dotenv.config();
 const config = {

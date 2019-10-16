@@ -13,7 +13,7 @@ const firebaseConfig = {
     projectId: "bp-best-present",
     storageBucket: "bp-best-present.appspot.com",
     messagingSenderId: "724917200850",
-    appId: "1:724917200850:web:ebdfda6368b7e776410a0b",
+    appId: "recommend:724917200850:web:ebdfda6368b7e776410a0b",
     measurementId: "G-H66P8S16WK"
 };
 firebase.initializeApp(firebaseConfig);
