@@ -10,9 +10,15 @@
         </span>
                 <div class="userInfo">
                     <h1 class="userName">{{userName}}</h1>
-                    <p class="userBirth">생일: {{userBirthday}}</p>
+                    <p class="userBirth">생일: {{userBirthday}}
+                        <button class="birthdayModify" @click="showModal = true">
+                            <i class="material-icons">create</i>
+                        </button></p>
                     <p class="userDday">D - {{dDay}}</p>
                 </div>
+                <birthdayModal v-if="showModal" @close="showModal = false">
+                    <h3 slot="header">생일 정보 입력</h3>
+                </birthdayModal>
             </div>
             <div>
                 <h2 class="title">받고 싶은 선물</h2>
@@ -27,10 +33,12 @@
     import {SET_USER_PROFILE} from '../../store'
     import store from '../../store'
     import wishUserPresent from './wishUserPresent'
+    import birthdayModal from './birthdayModal'
 
     export default {
         components: {
-            'wishUserPresent': wishUserPresent
+            'wishUserPresent': wishUserPresent,
+            'birthdayModal': birthdayModal
         },
         computed: {
             profileImg() {
@@ -72,7 +80,7 @@
         },
         data() {
             return {
-
+                showModal: false
             }
         },
         methods: {
@@ -150,13 +158,23 @@
     }
 
     .userBirth {
-        font-size: 16px;
+        position: relative;
+        font-size: 14px;
         font-weight: 400;
         margin-bottom: 8px;
     }
 
+    .birthdayModify {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        width: 36px;
+        height: 36px;
+        vertical-align: middle;
+    }
+
     .userDday {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
     }
 

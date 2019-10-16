@@ -8,8 +8,457 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        birthdayRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '생일선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
+        anniversaryRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '기념일선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
+        schoolRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '입학/졸업선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
+        weddingRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '결혼/집들이선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
+        babyRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '출산/임신선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
+        cheapRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '저렴한선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
+        expensiveRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '고급선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
+        christmasRank: [
+            {
+                rank: '1',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '크리스마스선물',
+                price: '70,000원'
+            },
+            {
+                rank: '2',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '3',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '4',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '5',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '6',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '7',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '8',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            },
+            {
+                rank: '9',
+                imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                name: '스마일 운동화(여)',
+                price: '70,000원'
+            }
+        ],
         user: {
             userID: '박용재',
+            userEmail: 'abc1234@gmail.com',
             userProfile: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
             userBirthday: '07-10',
             presentlist: [{
@@ -141,7 +590,8 @@ export default new Vuex.Store({
                     image: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg'
                 }]
             },
-        ]
+        ],
+        settingList: ['공지사항', '버전', '제작자 정보']
     },
     getters: {
 

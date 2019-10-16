@@ -3,7 +3,7 @@
         <footer>
             <button v-on:click="onClickFriendsTap">
                 <i class="material-icons">
-                    person
+                    supervisor_account
                 </i>
             </button>
             <button v-on:click="onClickRecommendTap">
@@ -54,6 +54,7 @@
         display: flex;
         position: fixed;
         padding: 0 16px;
+        border-top: 1px solid #eeeeee;
         width: 100%;
         height: 68px;
         background-color: white;
