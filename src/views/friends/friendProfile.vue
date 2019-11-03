@@ -92,6 +92,7 @@
         },
         data() {
             return {
+                profileImgData : this.$user.profile,
                 friendIndex: this.$route.params.index,
                 birthdayIndex: this.$route.params.index
             }

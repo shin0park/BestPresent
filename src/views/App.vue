@@ -5,7 +5,7 @@
             <router-view class="contents"></router-view>
             <app-footer></app-footer>
         </div>
-        <app-login v-show="!isLogin" v-on:is-Login="isLogined"></app-login>
+        <app-login v-show="!isLogin" v-on:changeIsLogin="isLogined"></app-login>
     </div>
 </template>
 
@@ -16,6 +16,8 @@
     export default {
         data() {
             return {
+                email: undefined,
+                password: undefined,
                 isLogin: false,
             }
         },

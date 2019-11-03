@@ -57,6 +57,7 @@
         data() {
             return {
                 searchValue: "",
+                userProfileImg: this.$user.profile
             }
         },
         methods: {
@@ -69,8 +70,11 @@
             },
         },
         async mounted() {
-            const user_data = await this.$api.readUser(this.$user.email);
-            this.$user.profile = user_data.profile;
+            const email = this.$user.email;
+            let flag = await this.$api.readUser(email);
+            if (flag.profile !== false) {
+                this.$user.profile = await this.$storage.getUrl(`image/profile/${email}`);
+            }
         }
     }
 </script>

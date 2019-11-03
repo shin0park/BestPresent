@@ -6,14 +6,15 @@
           <label for="profileUpload">
             <img v-bind:src="profileImg" class="profileImgEl">
           </label>
-          <input type="file" id="profileUpload">
+          <input type="file" id="profileUpload" accept="image/*" @change="detectFiles($event.target.files)">
         </span>
                 <div class="userInfo">
                     <h1 class="userName">{{userName}}</h1>
                     <p class="userBirth">생일: {{userBirthday}}
                         <button class="birthdayModify" @click="showModal = true">
                             <i class="material-icons">create</i>
-                        </button></p>
+                        </button>
+                    </p>
                     <p class="userDday">D - {{dDay}}</p>
                 </div>
                 <birthdayModal v-if="showModal" @close="showModal = false">
@@ -34,6 +35,7 @@
     import store from '../../store'
     import wishUserPresent from './wishUserPresent'
     import birthdayModal from './birthdayModal'
+    import profile_img from '../../assets/defalut_profile.png';
 
     export default {
         components: {
@@ -80,19 +82,25 @@
         },
         data() {
             return {
-                showModal: false
+                showModal: false,
+                file: this.$user.profile,
             }
         },
         methods: {
-            onClickProfile() {
-                let fr = new FileReader();
+            detectFiles(files) {
+                this.file = files[0];
+            },
+            async onClickProfile() {
                 let profileImgEl = document.querySelector(".profileImgEl");
-                fr.onload = function () {
-                    profileImgEl.src = fr.result;
-                    store.commit(SET_USER_PROFILE, profileImgEl.src);
-                };
-                fr.readAsDataURL(event.target.files[0]);
+                const email = this.$user.email;
+                //await this.$api.updateProfile(email, profile_img);
+                if (this.file !== this.$user.profile) {
+                    profileImgEl.src = URL.createObjectURL(this.file);
+                    await this.$api.updateProfile(email, this.file);
+                }
+
             }
+
         }
     }
 </script>

@@ -16,7 +16,8 @@
                 </div>
             </div>
             <div class="btnBox">
-                <button class="facebookBtn" v-on:click="facebookLogin()"><img src="../assets/facebookLogo.png">Facebook</button>
+                <button class="facebookBtn" v-on:click="facebookLogin()"><img src="../assets/facebookLogo.png">Facebook
+                </button>
                 <button class="googleBtn" v-on:click="googleLogin()"><img src="../assets/googleLogo.png">Google</button>
             </div>
         </div>
@@ -24,9 +25,11 @@
 </template>
 <script>
     import router from '../router'
+    import profile_img from '../assets/defalut_profile.png';
+
     export default {
-        data(){
-            return{
+        data() {
+            return {
                 test: {},
                 result: ""
             }
@@ -41,11 +44,11 @@
         },
         methods: {
             successLogin() {
-                router.push({name: 'friendsTap'});
-                this.$emit('is-Login');
+                this.$router.push({name: 'friendsTap'});
+                this.$emit('changeIsLogin');
             },
             async isUser(uid, uname) {
-                const flag = await this.$api.readUser(uid);
+                let flag = await this.$api.readUser(uid);
                 if (flag == null) {
                     await this.$api.addUser(uid, uname);
                     alert("가입되었습니다!");
@@ -53,7 +56,19 @@
                     this.$user.displayName = uname;
                     this.$user.login = true;
                     this.$emit('changeIsLogin');
+                    flag = await this.$api.readUser(uid);
+                }
 
+                if(flag.birth === false) {
+                    this.$user.birth = `생일을 입력해주세요`;
+                }else{
+                    let birthday = flag.birth.split("-");
+                    this.$user.birth = `${birthday[0]}월 ${birthday[1]}일`;
+                }
+                if(flag.profile === false) {
+                    this.$user.profile = await this.$storage.getUrl(`image/profile/defalut_profile.png`);
+                }else{
+                    this.$user.profile = await this.$storage.getUrl(`image/profile/${uid}`);
                 }
 
             },
@@ -62,25 +77,24 @@
                 const uid = (res.user.providerData[0].email == null) ? (res.user.providerData[0].uid) : (res.user.providerData[0].email);
                 const uname = res.user.displayName;
                 //console.log(uid);
-                this.isUser(uid, uname);
+                await this.isUser(uid, uname);
                 this.$user.email = uid;
                 this.$user.displayName = uname;
                 this.$user.login = true;
-                this.$emit('changeIsLogin');
                 this.result = "로그인 성공";
-                this.successLogin();
+                await this.successLogin();
             },
             async googleLogin() {
                 const res = await this.$auth.googleLogin();
-                this.isUser(res.user.email, res.user.displayName);
+                await this.isUser(res.user.email, res.user.displayName);
                 this.$user.email = res.user.email;
                 this.$user.displayName = res.user.displayName;
                 this.$user.login = true;
-                this.$emit('changeIsLogin');
                 this.result = "로그인 성공";
-                this.successLogin();
+                await this.successLogin();
             }
             // googleLogin() {
+
             //
             //     // alert('clickchaagsdfedsfsd');
             //     // console.log('clicksf');
@@ -114,15 +128,19 @@
         text-align: center;
         height: 100%
     }
+
     .flex-box {
         align-self: center;
     }
+
     .appTitle {
         margin-bottom: 168px;
     }
+
     .appTitle > div {
         margin-bottom: 6px;
     }
+
     button {
         position: relative;
         width: 256px;
@@ -132,17 +150,20 @@
         line-height: 48px;
         box-sizing: border-box;
     }
+
     .facebookBtn {
         background-color: #4267B2;
         padding-left: 16px;
         margin-bottom: 28px;
         color: white;
     }
+
     .googleBtn {
         background-color: white;
         padding-left: 14px;
         color: #757575;
     }
+
     button img {
         position: absolute;
         top: 11px;

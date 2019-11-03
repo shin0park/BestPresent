@@ -2,7 +2,7 @@
   <section class="settingTap">
     <div class="profileBox">
       <span class="userProfileImg">
-        <img src="../../assets/user.png">
+        <img v-bind:src=userProfile>
       </span>
       <div class="userInfo">
         <h1 class="userName">{{userName}}</h1>
@@ -20,11 +20,14 @@
       'settingList': settingList
     },
     computed: {
+      userProfile() {
+        return this.$user.profile;
+      },
       userName() {
-        return this.$store.state.user.userID;
+        return this.$user.displayName;
       },
       userEmail() {
-        return this.$store.state.user.userEmail;
+        return this.$user.email;
       },
       settingListName() {
         return this.$store.state.settingList;
