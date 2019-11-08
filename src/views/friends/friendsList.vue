@@ -22,7 +22,7 @@
             async profileImg() {
                 const email = this.$user.friendsList[this.friendsIndex].id;
                 const IsProfile  = this.$user.friendsList[this.friendsIndex].profile;
-                if(IsProfile=== false) {
+                if(IsProfile=== "false" || IsProfile=== false) {
                     return await this.$storage.getUrl(`image/profile/defalut_profile.png`);
                 }else{
                     return await this.$storage.getUrl(`image/profile/${email}`);

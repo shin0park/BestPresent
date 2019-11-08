@@ -44,10 +44,15 @@
             async onClickBirth() {
                 console.log('click');
                 console.log(this.friendId);
-                const email = this.$user.email
+                const email = this.$user.email;
                 const friendData = await this.$api.readUser(this.friendId);
                 await this.$api.addFriend(email, this.friendId, friendData.name, friendData.birth, friendData.profile);
+                const friendsList = await this.$api.readFriendsList(email);
+                this.$user.friendsList = friendsList;
+                const birthdayList = await this.$api.addBirthdayFriend(email);
+                this.$user.birthdayList = birthdayList;
                 this.$emit('close');
+                await this.$router.push({name: 'friendsTap'});
             }
         }
     }

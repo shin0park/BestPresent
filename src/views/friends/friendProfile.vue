@@ -44,16 +44,21 @@
                 }
             },
             friendBirth() {
+                let birth;
                 if (this.$route.params.isBirthday) {
-                    if (this.$user.birthdayList[this.birthdayIndex].birth !== false) {
-                        return this.$user.birthdayList[this.birthdayIndex].birth;
+                    birth = this.$user.birthdayList[this.birthdayIndex].birth;
+                    console.log("birthday list false " + typeof this.$user.birthdayList[this.birthdayIndex].birth);
+                    if (birth !== false || birth !== false) {
+                        return birth;
                     } else {
                         return "아직 생일을 입력하지 않았습니다."
                     }
 
                 } else {
-                    if (this.$user.friendsList[this.friendIndex].birth !== false) {
-                        return this.$user.friendsList[this.friendIndex].birth;
+                    console.log("friend list false " + typeof birth);
+                    birth = this.$user.friendsList[this.friendIndex].birth;
+                    if (birth !== false || birth !== false) {
+                        return birth;
                     } else {
                         return "아직 생일을 입력하지 않았습니다."
                     }
@@ -73,7 +78,7 @@
                 let nowMonth = today.getMonth() + 1;
                 let nowDate = today.getDate();
                 let birthday;
-                console.log("friend "+typeof this.$user.friendsList[this.friendIndex].birth);
+                console.log("friend " + typeof this.$user.friendsList[this.friendIndex].birth);
                 if (this.$route.params.isBirthday) {
                     if (this.$user.birthdayList[this.birthdayIndex].birth !== false) {
                         birthday = this.$user.birthdayList[this.birthdayIndex].birth.split("-");

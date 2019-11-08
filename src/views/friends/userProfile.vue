@@ -61,9 +61,13 @@
                 let nowYear = today.getFullYear();
                 let nowMonth = today.getMonth() + 1;
                 let nowDate = today.getDate();
+                if(this.$user.birthRaw === "false" || this.$user.birthRaw === false){
+                    console.log("birthRaw false");
+                    return " "
+                }
                 let birthday = this.$user.birthRaw.split("-");
-
                 console.log(this.$user.birthRaw);
+                console.log(typeof this.$user.birthRaw);
                 birthday.forEach((v, i) => {
                     birthday[i] = parseInt(v)
                 });

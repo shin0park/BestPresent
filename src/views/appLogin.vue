@@ -58,21 +58,24 @@
                     this.$emit('changeIsLogin');
                     flag = await this.$api.readUser(uid);
                 }
+                console.log("Db birth " + flag.birth);
+                console.log("Db birth " + typeof flag.birth);
+                console.log(typeof false);
                 this.$user.birthRaw = flag.birth;
-                if(flag.birth === false) {
+                if (flag.birth === "false" || flag.birth === false) {
                     this.$user.birth = `생일을 입력해주세요`;
-                }else{
+                } else {
                     let birthday = flag.birth.split("-");
                     this.$user.birth = `${birthday[0]}월 ${birthday[1]}일`;
                 }
-                if(flag.profile === false) {
+                if (flag.profile === "false" || flag.birth === false) {
                     this.$user.profile = await this.$storage.getUrl(`image/profile/defalut_profile.png`);
-                }else{
+                } else {
                     this.$user.profile = await this.$storage.getUrl(`image/profile/${uid}`);
                 }
                 const friendsList = await this.$api.readFriendsList(uid);
                 this.$user.friendsList = friendsList;
-                console.log("login user profile "+this.$user.profile);
+                console.log("login user profile " + this.$user.profile);
                 const birthdayList = await this.$api.addBirthdayFriend(uid);
                 this.$user.birthdayList = birthdayList;
             },
