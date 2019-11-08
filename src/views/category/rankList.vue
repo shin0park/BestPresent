@@ -1,7 +1,7 @@
 <template>
     <div style="width: 100%">
         <div class="rankListBox">
-            <span class="rankNumber">{{itemindex+1}}</span> <!-- itemdata.rank -->
+            <div class="rankNumber">{{itemindex+1}}</div> <!-- itemdata.rank -->
             <span class="itemImg" v-on:click="goItemSite(itemdata.link)">
                 <img v-bind:src="itemdata.image"> <!-- itemdata.imgSrc -->
             </span>
@@ -46,6 +46,8 @@
         padding: 20px 10px;
     }
     .rankNumber {
+        background-color: dodgerblue;
+        flex-basis: 26px;
         align-self: center;
         font-family: 'Arial', sans-serif;
         font-size: 21px;
@@ -57,9 +59,11 @@
         padding-left: 20px;
         flex-shrink: 0;
         width: 60px;
+        height: 60px;
     }
     .itemImg img {
         width: 100%;
+        height: 100%;
         vertical-align: middle;
     }
     .itemInfo {
