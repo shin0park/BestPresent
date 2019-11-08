@@ -61,7 +61,9 @@
                 let nowYear = today.getFullYear();
                 let nowMonth = today.getMonth() + 1;
                 let nowDate = today.getDate();
-                let birthday = this.$user.birth.split("-");
+                let birthday = this.$user.birthRaw.split("-");
+
+                console.log(this.$user.birthRaw);
                 birthday.forEach((v, i) => {
                     birthday[i] = parseInt(v)
                 });
@@ -77,6 +79,9 @@
                     dDay = Math.ceil((nextBirth.getTime() - today.getTime()) / 1000 / 60 / 60 / 24);
                 }
 
+                if (dDay === 0) {
+                    dDay = "day !"
+                }
                 return dDay
             }
         },
@@ -84,6 +89,7 @@
             return {
                 showModal: false,
                 file: this.$user.profile,
+
             }
         },
         methods: {
@@ -100,8 +106,8 @@
                 }
 
             }
+        },
 
-        }
     }
 </script>
 

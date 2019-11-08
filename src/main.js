@@ -23,10 +23,11 @@ Vue.prototype.$user = {
     gender: '',
     age: -1,
     birth: false,
+    birthRaw: false,
     profile: false,
     present_list: [],
-    friends_list: [],
-    birthday_list:[],
+    friendsList: "",
+    birthdayList:"",
 };
 
 new Vue({

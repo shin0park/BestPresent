@@ -58,6 +58,114 @@ const dataModule = {
             return e;
         }
     },
+    readFriendsList: async (userEmail) => {
+        const res = [];
+        let data;
+        (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
+            .forEach(doc => {
+                dataModule.updateFriendsList(userEmail, doc.id);
+            });
+        (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
+            .forEach(doc => {
+                data = doc.data();
+                console.log(data.id);
+                if (doc.profile === false) {
+                    data.friendImg = storageModule.getUrl(`image/profile/defalut_profile.png`);
+                } else {
+                    data.friendImg = storageModule.getUrl(`image/profile/${doc.id}`);
+                }
+                res.push(data)
+            });
+        return res;
+    },
+    addBirthdayFriend: async (userEmail) => {
+        const list = [];
+        let data;
+        const res = await dataModule.dDayCheck(userEmail);
+        console.log("Res " + res[0]);
+        (await resources.database.collection('Users').doc(userEmail).collection('birthdayList').get())
+            .forEach(doc => {
+                resources.database.collection('Users').doc(userEmail).collection('birthdayList').doc(doc.id).delete().then(function () {
+                    console.log("Document successfully deleted!");
+                }).catch(function (error) {
+                    console.error("Error removing document: ", error);
+                });
+            });
+
+        (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
+            .forEach(doc => {
+                data = doc.data();
+                for(let i=0; i<res.length; i++){
+                    if (data.id === res[i]){
+                        resources.database.collection('Users').doc(userEmail).collection('birthdayList').doc(res[0]).set({
+                            id: data.id,
+                            name: data.name,
+                            birth: data.birth,
+                            profile: data.profile,
+                        });
+                        list.push(data);
+                    }
+                }
+            });
+        return list;
+    },
+    dDayCheck: async (userEmail) => {
+        let res = [];
+        let dDay;
+        let today = new Date();
+        let nowYear = today.getFullYear();
+        let nowMonth = today.getMonth() + 1;
+        let nowDate = today.getDate();
+        let birthday;
+        let data;
+        (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
+            .forEach(doc => {
+                data = doc.data();
+                console.log(data.birth);
+                if (data.birth !== false) {
+                    birthday = data.birth.split("-");
+                    birthday.forEach((v, i) => {
+                        birthday[i] = parseInt(v)
+                    });
+
+                    if (nowMonth > birthday[0]) {
+                        let nextBirth = new Date(nowYear + 1, birthday[0] - 1, birthday[1]);
+                        dDay = Math.ceil((nextBirth.getTime() - today.getTime()) / 1000 / 60 / 60 / 24);
+                    } else if (nowMonth === birthday[0] && nowDate > birthday[1]) {
+                        let nextBirth = new Date(nowYear + 1, birthday[0] - 1, birthday[1]);
+                        dDay = Math.ceil((nextBirth.getTime() - today.getTime()) / 1000 / 60 / 60 / 24);
+                    } else {
+                        let nextBirth = new Date(nowYear, birthday[0] - 1, birthday[1]);
+                        dDay = Math.ceil((nextBirth.getTime() - today.getTime()) / 1000 / 60 / 60 / 24);
+                    }
+                } else {
+                    dDay = 100;
+                }
+
+                if (dDay <= 7) {
+                    res.push(doc.id);
+                }
+            });
+        return res;
+    },
+    addFriend: async (email, friendId, friendName, friendBirth, friendProfile) => {
+        await resources.database.collection('Users').doc(email).collection('friendsList').doc(friendId).set({
+            id: friendId,
+            name: friendName,
+            birth: friendBirth,
+            profile: friendProfile,
+        });
+    },
+    updateFriendsList: async (userEmail, friendEmail) => {
+        const flag = await dataModule.readUser(friendEmail);
+        console.log(flag.birth);
+        console.log(flag.profile);
+        await resources.database.collection('Users').doc(userEmail).collection('friendsList').doc(friendEmail).update({
+            birth: flag.birth,
+            profile: flag.profile,
+        });
+
+    },
     updateProfile: async (email, imgFile) => {
         await storageModule.upload(`image/profile/${email}`, imgFile);
         await resources.database.collection('Users').doc(email).update({

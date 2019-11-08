@@ -6,14 +6,15 @@
           <img v-bind:src="profileImg">
         </span>
                 <div class="userInfo">
-                    <h1 class="userName">{{friendName}}</h1>
-                    <p class="userBirth">생일: {{friendBirthday}}</p>
+                    <h1 class="userName">{{this.friendName}}</h1>
+                    <p class="userBirth">생일: {{this.friendBirth}}</p>
                     <p class="userDday">D - {{dDay}}</p>
                 </div>
             </div>
             <div>
                 <h2 class="title">받고 싶은 선물</h2>
-                <wish-friend-present v-for="(present,index) in friendWishPresent" :key="index" :present-index="index" :friend-index="friendIndex"></wish-friend-present>
+                <wish-friend-present v-for="(present,index) in friendWishPresent" :key="index" :present-index="index"
+                                     :friend-index="friendIndex"></wish-friend-present>
             </div>
         </section>
     </div>
@@ -21,70 +22,87 @@
 
 <script>
     import wishFriendPresent from './wishFriendPresent'
-    export default {
-        props: {
 
-        },
+    export default {
+        props: {},
         components: {
             'wishFriendPresent': wishFriendPresent
         },
         computed: {
             profileImg() {
-                if(this.$route.params.isBirthday) {
-                    return this.$store.state.birthdayList[this.birthdayIndex].friendProfile;
+                if (this.$route.params.isBirthday) {
+                    return this.$user.birthdayList[this.birthdayIndex].friendImg;
                 } else {
-                    return this.$store.state.friendsList[this.friendIndex].friendProfile;
+                    return this.$user.friendsList[this.friendIndex].friendImg;
                 }
             },
             friendName() {
-                if(this.$route.params.isBirthday) {
-                    return this.$store.state.birthdayList[this.birthdayIndex].name;
+                if (this.$route.params.isBirthday) {
+                    return this.$user.birthdayList[this.birthdayIndex].name;
                 } else {
-                    return this.$store.state.friendsList[this.friendIndex].name;
+                    return this.$user.friendsList[this.friendIndex].name;
                 }
             },
-            friendBirthday() {
-                if(this.$route.params.isBirthday) {
-                    return this.$store.state.birthdayList[this.birthdayIndex].birthday;
+            friendBirth() {
+                if (this.$route.params.isBirthday) {
+                    if (this.$user.birthdayList[this.birthdayIndex].birth !== false) {
+                        return this.$user.birthdayList[this.birthdayIndex].birth;
+                    } else {
+                        return "아직 생일을 입력하지 않았습니다."
+                    }
+
                 } else {
-                    return this.$store.state.friendsList[this.friendIndex].birthday;
+                    if (this.$user.friendsList[this.friendIndex].birth !== false) {
+                        return this.$user.friendsList[this.friendIndex].birth;
+                    } else {
+                        return "아직 생일을 입력하지 않았습니다."
+                    }
                 }
             },
             friendWishPresent() {
-                if(this.$route.params.isBirthday) {
-                    return this.$store.state.birthdayList[this.birthdayIndex].presentlist;
+                if (this.$route.params.isBirthday) {
+                    return this.$user.birthdayList[this.birthdayIndex].presentlist;
                 } else {
-                    return this.$store.state.friendsList[this.friendIndex].presentlist;
+                    return this.$user.friendsList[this.friendIndex].presentlist;
                 }
             },
             dDay() {
                 let dDay;
                 let today = new Date();
                 let nowYear = today.getFullYear();
-                let nowMonth = today.getMonth()+1;
+                let nowMonth = today.getMonth() + 1;
                 let nowDate = today.getDate();
                 let birthday;
-                if(this.$route.params.isBirthday) {
-                    birthday = this.$store.state.birthdayList[this.birthdayIndex].birthday.split("-");
+                console.log("friend "+typeof this.$user.friendsList[this.friendIndex].birth);
+                if (this.$route.params.isBirthday) {
+                    if (this.$user.birthdayList[this.birthdayIndex].birth !== false) {
+                        birthday = this.$user.birthdayList[this.birthdayIndex].birth.split("-");
+                    } else {
+                        return " "
+                    }
                 } else {
-                    birthday = this.$store.state.friendsList[this.friendIndex].birthday.split("-");
+                    if (this.$user.friendsList[this.friendIndex].birth !== false) {
+                        birthday = this.$user.friendsList[this.friendIndex].birth.split("-");
+                    } else {
+                        return " "
+                    }
                 }
-                birthday.forEach((v,i) => {
+                birthday.forEach((v, i) => {
                     birthday[i] = parseInt(v)
                 });
 
-                if(nowMonth > birthday[0]) {
-                    let nextBirth = new Date(nowYear+1, birthday[0]-1, birthday[1]);
-                    dDay = Math.ceil((nextBirth.getTime() - today.getTime())/1000/60/60/24);
-                } else if(nowMonth === birthday[0] && nowDate > birthday[1]) {
-                    let nextBirth = new Date(nowYear+1, birthday[0]-1, birthday[1]);
-                    dDay = Math.ceil((nextBirth.getTime() - today.getTime())/1000/60/60/24);
+                if (nowMonth > birthday[0]) {
+                    let nextBirth = new Date(nowYear + 1, birthday[0] - 1, birthday[1]);
+                    dDay = Math.ceil((nextBirth.getTime() - today.getTime()) / 1000 / 60 / 60 / 24);
+                } else if (nowMonth === birthday[0] && nowDate > birthday[1]) {
+                    let nextBirth = new Date(nowYear + 1, birthday[0] - 1, birthday[1]);
+                    dDay = Math.ceil((nextBirth.getTime() - today.getTime()) / 1000 / 60 / 60 / 24);
                 } else {
-                    let nextBirth = new Date(nowYear, birthday[0]-1, birthday[1]);
-                    dDay = Math.ceil((nextBirth.getTime() - today.getTime())/1000/60/60/24);
+                    let nextBirth = new Date(nowYear, birthday[0] - 1, birthday[1]);
+                    dDay = Math.ceil((nextBirth.getTime() - today.getTime()) / 1000 / 60 / 60 / 24);
                 }
 
-                if(dDay === 0) {
+                if (dDay === 0) {
                     dDay = "day !"
                 }
                 return dDay
@@ -92,13 +110,12 @@
         },
         data() {
             return {
-                profileImgData : this.$user.profile,
                 friendIndex: this.$route.params.index,
-                birthdayIndex: this.$route.params.index
+                birthdayIndex: this.$route.params.index,
             }
         },
-        methods: {
-
+        methods: {},
+        async mounted() {
         }
     }
 </script>
@@ -110,6 +127,7 @@
         width: 100%;
         box-sizing: border-box;
     }
+
     .profileBox {
         display: flex;
         padding: 0 20px;
@@ -119,16 +137,19 @@
         box-sizing: border-box;
         box-shadow: 2px 2px 6px #bdbdbd;
     }
+
     .userProfileImg {
         flex-basis: 80px;
         height: 80px;
         align-self: center;
     }
+
     .userProfileImg img {
         width: 100%;
         height: 100%;
         border-radius: 50%;
     }
+
     .userInfo {
         display: flex;
         flex-grow: 1;
@@ -137,20 +158,24 @@
         padding-left: 30px;
         box-sizing: border-box;
     }
+
     .userName {
         font-size: 16px;
         font-weight: 900;
         margin-bottom: 8px;
     }
+
     .userBirth {
         font-size: 16px;
         font-weight: 400;
         margin-bottom: 8px;
     }
+
     .userDday {
         font-size: 16px;
         font-weight: 700;
     }
+
     .title {
         margin: 0 0 16px 10px;
         font-size: 21px;

@@ -15,10 +15,17 @@
         },
         computed: {
             birthdayName() {
-                return this.$user.birthday_list[this.birthdayIndex].name;
+                return this.$user.birthdayList[this.birthdayIndex].name;
             },
-            profileImg() {
-                return this.$user.birthday_list[this.birthdayIndex].profile;
+            async profileImg() {
+                const email = this.$user.birthdayList[this.birthdayIndex].id;
+                const IsProfile  = this.$user.birthdayList[this.birthdayIndex].profile;
+                if(IsProfile=== false) {
+                    return await this.$storage.getUrl(`image/profile/defalut_profile.png`);
+                }else{
+                    return await this.$storage.getUrl(`image/profile/${email}`);
+                }
+                //return this.$user.birthdayList[this.birthdayIndex].profile;
             }
         },
         methods: {

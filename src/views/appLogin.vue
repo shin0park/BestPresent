@@ -58,7 +58,7 @@
                     this.$emit('changeIsLogin');
                     flag = await this.$api.readUser(uid);
                 }
-
+                this.$user.birthRaw = flag.birth;
                 if(flag.birth === false) {
                     this.$user.birth = `생일을 입력해주세요`;
                 }else{
@@ -70,7 +70,11 @@
                 }else{
                     this.$user.profile = await this.$storage.getUrl(`image/profile/${uid}`);
                 }
-
+                const friendsList = await this.$api.readFriendsList(uid);
+                this.$user.friendsList = friendsList;
+                console.log("login user profile "+this.$user.profile);
+                const birthdayList = await this.$api.addBirthdayFriend(uid);
+                this.$user.birthdayList = birthdayList;
             },
             async facebookLogin() {
                 const res = await this.$auth.facebookLogin();

@@ -1,6 +1,6 @@
 <template>
     <div class="friendsList" v-on:click="onClickFriendProfile" v-if="searching">
-        <span class="friendsImg"><img v-bind:src="profileImg"></span>
+        <span class="friendsImg"><img v-bind:src="profileImg" class="profileImgEl"></span>
         <h3 class="friendsName">{{friendsName}}</h3>
     </div>
 </template>
@@ -9,7 +9,6 @@
     export default {
         data() {
             return {
-
             }
         },
         props: {
@@ -18,13 +17,22 @@
         },
         computed: {
             friendsName() {
-                return this.$user.friends_list[this.friendsIndex].name;
+                return this.$user.friendsList[this.friendsIndex].name;
             },
-            profileImg() {
-                return this.$user.friends_list[this.friendsIndex].profile;
+            async profileImg() {
+                const email = this.$user.friendsList[this.friendsIndex].id;
+                const IsProfile  = this.$user.friendsList[this.friendsIndex].profile;
+                if(IsProfile=== false) {
+                    return await this.$storage.getUrl(`image/profile/defalut_profile.png`);
+                }else{
+                    return await this.$storage.getUrl(`image/profile/${email}`);
+                }
+                //console.log(this.$user.friendsList[this.friendsIndex]);
+                //console.log("profile img "+this.$user.friendsList[this.friendIndex].friendImg);
+                //return this.$user.friendsList[this.friendsIndex].friendImg;
             },
             searching() {
-                const friendName = this.$user.friends_list[this.friendsIndex].name;
+                const friendName = this.$user.friendsList[this.friendsIndex].name;
                 if(friendName.includes(this.searchValue)) {
                     return true
                 } else {
@@ -37,7 +45,8 @@
                 window.scrollTo(0,0);
                 this.$router.push({name: 'friendProfile', params: {"index": this.friendsIndex}});
             }
-        }
+        },
+
     }
 
 </script>
