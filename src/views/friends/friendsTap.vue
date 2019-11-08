@@ -3,7 +3,7 @@
         <section class="friendsTap">
             <div class="titleBox">
                 <h1 class="title">친구</h1>
-                <button class="addFriend" @click="onClickAddFriend"><i class="material-icons">
+                <button class="addFriend" @click="showModal = true"><i class="material-icons">
                     person_add
                 </i></button>
             </div>
@@ -27,6 +27,9 @@
                 <friends-list v-for="(friend, index) in friendsList" :key="index" :friends-index="index"
                               :search-value="searchValue"></friends-list>
             </div>
+            <AddFriendModal v-if="showModal" @close="showModal = false">
+                <h3 slot="header">친구추가</h3>
+            </AddFriendModal>
         </section>
     </div>
 </template>
@@ -34,11 +37,12 @@
 <script>
     import friendsList from './friendsList'
     import birthdayFriends from './birthdayFriends'
-
+    import AddFriendModal from "./AddFriendModal";
     export default {
         components: {
             'friendsList': friendsList,
-            'birthdayFriends': birthdayFriends
+            'birthdayFriends': birthdayFriends,
+            'AddFriendModal': AddFriendModal
         },
         computed: {
             userID() {
@@ -48,25 +52,23 @@
                 return this.$user.profile;
             },
             friendsList() {
-                return this.$user.present_list;
+                return this.$user.friendsList;
             },
             birthdayList() {
-                return this.$user.birthday_list;
+                return this.$user.birthdayList;
             }
         },
         data() {
             return {
                 searchValue: "",
-                userProfileImg: this.$user.profile
+                userProfileImg: this.$user.profile,
+                showModal: false,
             }
         },
         methods: {
             onClickUserProfile() {
                 window.scrollTo(0, 0);
                 this.$router.push({name: 'userProfile'});
-            },
-            onClickAddFriend() {
-
             },
         },
         async mounted() {
