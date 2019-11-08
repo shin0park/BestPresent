@@ -591,8 +591,73 @@ export default new Vuex.Store({
                 }]
             },
         ],
-        settingList: ['공지사항', '버전', '제작자 정보']
+        settingList: ['공지사항', '버전', '제작자 정보'],
+        femaleItems: {
+            "lastBuildDate": "Wed, 02 Oct 2019 20:17:47 +0900",
+            "total": 9723262,
+            "start": 1,
+            "display": 10,
+            "items": [
+                {
+                    "title": "나이키 에어맥스 95 에센셜 AT9865-100",
+                    "link": "https://search.shopping.naver.com/gate.nhn?id=20255291266",
+                    "image": "https://shopping-phinf.pstatic.net/main_2025529/20255291266.20190716140532.jpg",
+                    "lprice": "121710",
+                    "hprice": "269600",
+                    "mallName": "네이버",
+                    "productId": "20255291266",
+                    "productType": "1"
+                },
+                {
+                    "title": "나이키 에어맥스 95 에센셜 AT9865-100",
+                    "link": "https://search.shopping.naver.com/gate.nhn?id=20255291266",
+                    "image": "https://shopping-phinf.pstatic.net/main_2025529/20255291266.20190716140532.jpg",
+                    "lprice": "121710",
+                    "hprice": "269600",
+                    "mallName": "네이버",
+                    "productId": "20255291266",
+                    "productType": "1"
+                },
+                ]
     },
+        maleItems: {
+            "lastBuildDate": "Wed, 02 Oct 2019 20:17:47 +0900",
+            "total": 9723262,
+            "start": 1,
+            "display": 10,
+            "items": [
+                {
+                    "title": "나이키 에어맥스 95 에센셜 AT9865-100",
+                    "link": "https://search.shopping.naver.com/gate.nhn?id=20255291266",
+                    "image": "https://shopping-phinf.pstatic.net/main_2025529/20255291266.20190716140532.jpg",
+                    "lprice": "121710",
+                    "hprice": "269600",
+                    "mallName": "네이버",
+                    "productId": "20255291266",
+                    "productType": "1"
+                },
+                {
+                    "title": "나이키 에어맥스 95 에센셜 AT9865-100",
+                    "link": "https://search.shopping.naver.com/gate.nhn?id=20255291266",
+                    "image": "https://shopping-phinf.pstatic.net/main_2025529/20255291266.20190716140532.jpg",
+                    "lprice": "121710",
+                    "hprice": "269600",
+                    "mallName": "네이버",
+                    "productId": "20255291266",
+                    "productType": "1"
+                },
+                {
+                    "title": "나이키 에어맥스 95 에센셜 AT9865-100",
+                    "link": "https://search.shopping.naver.com/gate.nhn?id=20255291266",
+                    "image": "https://shopping-phinf.pstatic.net/main_2025529/20255291266.20190716140532.jpg",
+                    "lprice": "121710",
+                    "hprice": "269600",
+                    "mallName": "네이버",
+                    "productId": "20255291266",
+                    "productType": "1"
+                },
+            ]
+        },
     getters: {
 
     },
@@ -608,4 +673,4 @@ export default new Vuex.Store({
     actions: {
 
     },
-})
+}})

@@ -1,15 +1,15 @@
 <template>
     <div style="width: 100%">
         <div class="rankListBox">
-            <span class="rankNumber">{{itemdata.rank}}.</span>
-            <span class="itemImg">
-                <img v-bind:src="itemdata.imgSrc">
+            <span class="rankNumber">{{itemindex+1}}</span> <!-- itemdata.rank -->
+            <span class="itemImg" v-on:click="goItemSite(itemdata.link)">
+                <img v-bind:src="itemdata.image"> <!-- itemdata.imgSrc -->
             </span>
-            <div class="itemInfo">
-                <h2 class="itemName">{{itemdata.name}}</h2>
-                <p class="itemPrice">{{itemdata.price}}</p>
+            <div class="itemInfo" v-on:click="goItemSite(itemdata.link)">
+                <h2 class="itemName">{{itemdata.title}}</h2> <!-- itemdata.name -->
+                <p class="itemPrice">{{itemdata.lprice}}원</p> <!-- itemdata.price -->
             </div>
-            <button class="itemPresentBtn">
+            <button class="itemCartBtn" v-on:click="addCart(itemdata)">
                 <i class="material-icons">
                     card_giftcard
                 </i>
@@ -25,7 +25,18 @@
 
             }
         },
-        props: ['itemdata']
+        props: {
+            'itemdata': Object,
+            'itemindex': Number
+        },
+        methods: {
+            goItemSite(address) {
+                window.open(address, '_blank');
+            },
+            addCart(itemdata) {
+                console.log(itemdata);
+            }
+        }
     }
 </script>
 
@@ -72,10 +83,10 @@
         font-weight: 700;
         color: #757575;
     }
-    .itemPresentBtn {
+    .itemCartBtn {
         padding: 0 10px;
     }
-    .itemPresentBtn .material-icons {
+    .itemCartBtn .material-icons {
         font-size: 21px;
         color: #E61923;
     }

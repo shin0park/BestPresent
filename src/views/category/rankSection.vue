@@ -6,10 +6,10 @@
                 <button class="rankBtn clickedBtn" v-on:click="onClickGender">여성</button>
                 <button class="rankBtn" v-on:click="onClickGender">남성</button>
                 <template v-if="femaleSeen">
-                    <rankList v-for="item in femaleItems" v-bind:key="item.name" v-bind:itemdata="item"></rankList>
+                    <rankList v-for="(item, index) in femaleItems" v-bind:key="item.name" v-bind:itemdata="item" v-bind:itemindex="index"></rankList>
                 </template>
                 <template v-if="maleSeen">
-                    <rankList v-for="item in maleItems" v-bind:key="item.name" v-bind:itemdata="item"></rankList>
+                    <rankList v-for="(item, index) in maleItems" v-bind:key="item.name" v-bind:itemdata="item" v-bind:itemindex="index"></rankList>
                 </template>
             </div>
         </section>
@@ -19,62 +19,70 @@
 <script>
     import rankList from './rankList'
     export default {
+        computed: {
+          femaleItems() {
+            return this.$store.state.femaleItems.items;
+          },
+          maleItems() {
+            return this.$store.state.maleItems.items;
+          },
+        },
         data() {
             return {
                 femaleSeen: true,
                 maleSeen: false,
-                femaleItems: [{
-                    rank: '1',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 운동화(여)',
-                    price: '70,000원'
-                },{
-                    rank: '2',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 목걸이(여)',
-                    price: '70,000원'
-                },{
-                    rank: '3',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 운동화2',
-                    price: '70,000원'
-                },{
-                    rank: '4',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 목걸이2',
-                    price: '70,000원'
-                },{
-                    rank: '5',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 운동화3',
-                    price: '70,000원'
-                }],
-                maleItems: [{
-                    rank: '1',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 운동화(남)',
-                    price: '70,000원'
-                },{
-                    rank: '2',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 목걸이(남)',
-                    price: '70,000원'
-                },{
-                    rank: '3',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 운동화2',
-                    price: '70,000원'
-                },{
-                    rank: '4',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 목걸이2',
-                    price: '70,000원'
-                },{
-                    rank: '5',
-                    imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
-                    name: '스마일 운동화3',
-                    price: '70,000원'
-                }]
+                // femaleItems: [{
+                //     rank: '1',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 운동화(여)',
+                //     price: '70,000원'
+                // },{
+                //     rank: '2',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 목걸이(여)',
+                //     price: '70,000원'
+                // },{
+                //     rank: '3',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 운동화2',
+                //     price: '70,000원'
+                // },{
+                //     rank: '4',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 목걸이2',
+                //     price: '70,000원'
+                // },{
+                //     rank: '5',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 운동화3',
+                //     price: '70,000원'
+                // }],
+                // maleItems: [{
+                //     rank: '1',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 운동화(남)',
+                //     price: '70,000원'
+                // },{
+                //     rank: '2',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 목걸이(남)',
+                //     price: '70,000원'
+                // },{
+                //     rank: '3',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 운동화2',
+                //     price: '70,000원'
+                // },{
+                //     rank: '4',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 목걸이2',
+                //     price: '70,000원'
+                // },{
+                //     rank: '5',
+                //     imgSrc: 'https://shopping-phinf.pstatic.net/main_1256026/12560261375.5.jpg',
+                //     name: '스마일 운동화3',
+                //     price: '70,000원'
+                // }],
             }
         },
         components: {
@@ -87,12 +95,12 @@
                     v.classList.remove("clickedBtn");
                 });
                 e.target.classList.add("clickedBtn")
-                if(this.femaleSeen === true) {
-                    this.femaleSeen = false;
-                    this.maleSeen = true;
-                } else if(this.maleSeen === true) {
+                if(e.target.innerHTML === '여성') {
                     this.femaleSeen = true;
                     this.maleSeen = false;
+                } else if(e.target.innerHTML === '남성') {
+                    this.femaleSeen = false;
+                    this.maleSeen = true;
                 }
             }
         }
