@@ -1,6 +1,6 @@
 <template>
   <div>
-    <rank-list v-for="item in items" v-bind:itemdata="item"></rank-list>
+    <rank-list v-for="(item, index) in items" v-bind:key="item.name" v-bind:itemdata="item" v-bind:itemindex="index"></rank-list>
   </div>
 </template>
 
@@ -9,13 +9,13 @@
   export default {
     data() {
       return {
-
+        items : []
       }
     },
-    computed: {
-      items() {
-        return this.$store.state.birthdayRank
-      }
+    async mounted() {
+        const itemList = await this.$api.readCBirth();
+        this.items = itemList;
+        console.log(this.items)
     },
     components: {
       'rankList': rankList

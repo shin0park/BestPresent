@@ -46,7 +46,6 @@
         padding: 20px 10px;
     }
     .rankNumber {
-        background-color: dodgerblue;
         flex-basis: 26px;
         align-self: center;
         font-family: 'Arial', sans-serif;

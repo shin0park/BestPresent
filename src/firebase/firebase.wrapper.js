@@ -180,6 +180,11 @@ const dataModule = {
             birth: birthday
         });
     },
-}
+    readCBirth : async () => {
+        let birthItems = await resources.database.collection('Products').doc('case').collection('c_birth').get();
+        birthItems = birthItems.docs.map(el => el.data());
+        return birthItems;
+    }
+};
 
 export {authModule, dataModule, storageModule};
