@@ -31,9 +31,9 @@
         computed: {
             profileImg() {
                 if (this.$route.params.isBirthday) {
-                    return this.$user.birthdayList[this.birthdayIndex].friendImg;
+                    return this.$user.birthdayProfile[this.birthdayIndex];
                 } else {
-                    return this.$user.friendsList[this.friendIndex].friendImg;
+                    return this.$user.friendProfile[this.friendIndex];
                 }
             },
             friendName() {

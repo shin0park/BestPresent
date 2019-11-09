@@ -75,21 +75,15 @@ const dataModule = {
     readFriendsList: async (userEmail) => {
         const res = [];
         let data;
-        // await dataModule.updateFriends(userEmail);
-        // (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
-        //     .forEach(doc => {
-        //         dataModule.updateFriends(userEmail, doc.id);
-        //     });
         (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
             .forEach(doc => {
                 data = doc.data();
-                console.log("readFriends " + data.id);
-                console.log("readFriends " + data.birth);
-                if (doc.profile === false) {
+                if (doc.profile === false || doc.profile === "false") {
                     data.friendImg = storageModule.getUrl(`image/profile/defalut_profile.png`);
                 } else {
                     data.friendImg = storageModule.getUrl(`image/profile/${doc.id}`);
                 }
+
                 res.push(data)
             });
         return res;
@@ -98,7 +92,6 @@ const dataModule = {
         const list = [];
         let data;
         const res = await dataModule.dDayCheck(userEmail);
-        console.log("Res " + res[0]);
         (await resources.database.collection('Users').doc(userEmail).collection('birthdayList').get())
             .forEach(doc => {
                 resources.database.collection('Users').doc(userEmail).collection('birthdayList').doc(doc.id).delete().then(function () {
@@ -137,7 +130,6 @@ const dataModule = {
         (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
             .forEach(doc => {
                 data = doc.data();
-                console.log(data.birth);
                 if (data.birth !== false || data.birth !== "false") {
                     birthday = data.birth.split("-");
                     birthday.forEach((v, i) => {
@@ -157,8 +149,7 @@ const dataModule = {
                 } else {
                     dDay = 100;
                 }
-                console.log("DDAY" + data.id);
-                console.log("DDAY" + dDay);
+
                 if (dDay <= 7) {
                     res.push(doc.id);
                 }

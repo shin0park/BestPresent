@@ -52,7 +52,6 @@
         },
         methods: {
             async onClickBirth() {
-                console.log('click');
                 const email = this.$user.email;
                 let birthday = `${this.pickMonth}-${this.pickDay}`;
                 await this.$api.updateBirthday(email, birthday);

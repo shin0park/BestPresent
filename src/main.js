@@ -25,6 +25,8 @@ Vue.prototype.$user = {
     birth: false,
     birthRaw: false,
     profile: false,
+    friendProfile:[],
+    birthdayProfile:[],
     present_list: [],
     friendsList: "",
     birthdayList:"",

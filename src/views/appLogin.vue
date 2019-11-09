@@ -74,19 +74,29 @@
 
                 const friendsList = await this.$api.readFriendsList(uid);
                 this.$user.friendsList = friendsList;
-                if (friendsList.length > 0) {
-                    console.log("login friendsList " + this.$user.friendsList[2].birth);
+                //console.log("login "+this.$user.friendsList[0].friendImg);
+                for(let i = 0; i < friendsList.length; i++){
+                    if (friendsList[i].profile === false || friendsList[i].profile === "false") {
+                        this.$user.friendProfile.push(await this.$storage.getUrl(`image/profile/defalut_profile.png`));
+                    } else {
+                        this.$user.friendProfile.push(await this.$storage.getUrl(`image/profile/${friendsList[i].id}`));
+                    }
                 }
-
-                console.log("login user profile " + this.$user.profile);
                 const birthdayList = await this.$api.addBirthdayFriend(uid);
                 this.$user.birthdayList = birthdayList;
+                for(let i = 0; i < birthdayList.length; i++){
+                    if (birthdayList[i].profile === false || birthdayList[i].profile === "false") {
+                        this.$user.birthdayProfile.push(await this.$storage.getUrl(`image/profile/defalut_profile.png`));
+                    } else {
+                        this.$user.birthdayProfile.push(await this.$storage.getUrl(`image/profile/${birthdayList[i].id}`));
+                    }
+                }
+
             },
             async facebookLogin() {
                 const res = await this.$auth.facebookLogin();
                 const uid = (res.user.providerData[0].email == null) ? (res.user.providerData[0].uid) : (res.user.providerData[0].email);
                 const uname = res.user.displayName;
-                //console.log(uid);
                 await this.isUser(uid, uname);
                 this.$user.email = uid;
                 this.$user.displayName = uname;
@@ -103,27 +113,6 @@
                 this.result = "로그인 성공";
                 await this.successLogin();
             }
-            // googleLogin() {
-
-            //
-            //     // alert('clickchaagsdfedsfsd');
-            //     // console.log('clicksf');
-            //     // fetch('/auth', {
-            //     //     method: 'POST',
-            //     //     headers: new Headers({
-            //     //         'Content-Type': 'application/json'
-            //     //     }),
-            //     //     body: JSON.stringify({
-            //     //         msg: "googlelogin"
-            //     //     })
-            //     // }).then(function (response) {
-            //     //     console.log(response);
-            //     //     return response.json();
-            //     // }).then(function (result) {
-            //     //     console.log(result);
-            //     // });
-            //
-            // }
         }
     }
 </script>
