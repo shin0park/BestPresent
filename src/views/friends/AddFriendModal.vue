@@ -52,7 +52,7 @@
                 const birthdayList = await this.$api.addBirthdayFriend(email);
                 this.$user.birthdayList = birthdayList;
                 this.$emit('close');
-                await this.$router.push({name: 'friendsTap'});
+                await this.$router.push({name: 'settingTap'});
             }
         }
     }

@@ -58,9 +58,7 @@
                     this.$emit('changeIsLogin');
                     flag = await this.$api.readUser(uid);
                 }
-                console.log("Db birth " + flag.birth);
-                console.log("Db birth " + typeof flag.birth);
-                console.log(typeof false);
+                await this.$api.updateFriendsList(uid);
                 this.$user.birthRaw = flag.birth;
                 if (flag.birth === "false" || flag.birth === false) {
                     this.$user.birth = `생일을 입력해주세요`;
@@ -73,8 +71,13 @@
                 } else {
                     this.$user.profile = await this.$storage.getUrl(`image/profile/${uid}`);
                 }
+
                 const friendsList = await this.$api.readFriendsList(uid);
                 this.$user.friendsList = friendsList;
+                if (friendsList.length > 0) {
+                    console.log("login friendsList " + this.$user.friendsList[2].birth);
+                }
+
                 console.log("login user profile " + this.$user.profile);
                 const birthdayList = await this.$api.addBirthdayFriend(uid);
                 this.$user.birthdayList = birthdayList;

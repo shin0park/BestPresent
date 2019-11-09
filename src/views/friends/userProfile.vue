@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div>
+            <router-view :key="this.$route.fullPath"></router-view>
+        </div>
         <section class="userProfileTap">
             <div class="profileBox">
         <span class="userProfileImg" v-on:change="onClickProfile">
@@ -61,7 +64,7 @@
                 let nowYear = today.getFullYear();
                 let nowMonth = today.getMonth() + 1;
                 let nowDate = today.getDate();
-                if(this.$user.birthRaw === "false" || this.$user.birthRaw === false){
+                if (this.$user.birthRaw === "false" || this.$user.birthRaw === false) {
                     console.log("birthRaw false");
                     return " "
                 }
@@ -86,7 +89,7 @@
                 if (dDay === 0) {
                     dDay = "day !"
                 }
-                return dDay
+                return dDay;
             }
         },
         data() {

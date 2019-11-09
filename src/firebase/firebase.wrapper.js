@@ -58,17 +58,33 @@ const dataModule = {
             return e;
         }
     },
+    updateFriends: async (userEmail, friendEmail) => {
+        const flag = await dataModule.readUser(friendEmail);
+        await resources.database.collection('Users').doc(userEmail).collection('friendsList').doc(friendEmail).update({
+            birth: flag.birth,
+            profile: flag.profile,
+        });
+
+    },
+    updateFriendsList: async (userEmail) => {
+        (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
+            .forEach(doc => {
+                dataModule.updateFriends(userEmail, doc.id);
+            });
+    },
     readFriendsList: async (userEmail) => {
         const res = [];
         let data;
-        (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
-            .forEach(doc => {
-                dataModule.updateFriendsList(userEmail, doc.id);
-            });
+        // await dataModule.updateFriends(userEmail);
+        // (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
+        //     .forEach(doc => {
+        //         dataModule.updateFriends(userEmail, doc.id);
+        //     });
         (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
             .forEach(doc => {
                 data = doc.data();
-                console.log(data.id);
+                console.log("readFriends " + data.id);
+                console.log("readFriends " + data.birth);
                 if (doc.profile === false) {
                     data.friendImg = storageModule.getUrl(`image/profile/defalut_profile.png`);
                 } else {
@@ -95,8 +111,8 @@ const dataModule = {
         (await resources.database.collection('Users').doc(userEmail).collection('friendsList').get())
             .forEach(doc => {
                 data = doc.data();
-                for(let i=0; i<res.length; i++){
-                    if (data.id === res[i]){
+                for (let i = 0; i < res.length; i++) {
+                    if (data.id === res[i]) {
                         resources.database.collection('Users').doc(userEmail).collection('birthdayList').doc(res[0]).set({
                             id: data.id,
                             name: data.name,
@@ -122,7 +138,7 @@ const dataModule = {
             .forEach(doc => {
                 data = doc.data();
                 console.log(data.birth);
-                if (data.birth !== false) {
+                if (data.birth !== false || data.birth !== "false") {
                     birthday = data.birth.split("-");
                     birthday.forEach((v, i) => {
                         birthday[i] = parseInt(v)
@@ -141,7 +157,8 @@ const dataModule = {
                 } else {
                     dDay = 100;
                 }
-
+                console.log("DDAY" + data.id);
+                console.log("DDAY" + dDay);
                 if (dDay <= 7) {
                     res.push(doc.id);
                 }
@@ -155,16 +172,6 @@ const dataModule = {
             birth: friendBirth,
             profile: friendProfile,
         });
-    },
-    updateFriendsList: async (userEmail, friendEmail) => {
-        const flag = await dataModule.readUser(friendEmail);
-        console.log(flag.birth);
-        console.log(flag.profile);
-        await resources.database.collection('Users').doc(userEmail).collection('friendsList').doc(friendEmail).update({
-            birth: flag.birth,
-            profile: flag.profile,
-        });
-
     },
     updateProfile: async (email, imgFile) => {
         await storageModule.upload(`image/profile/${email}`, imgFile);
@@ -180,7 +187,7 @@ const dataModule = {
             birth: birthday
         });
     },
-    readCBirth : async () => {
+    readCBirth: async () => {
         let birthItems = await resources.database.collection('Products').doc('case').collection('c_birth').get();
         birthItems = birthItems.docs.map(el => el.data());
         return birthItems;

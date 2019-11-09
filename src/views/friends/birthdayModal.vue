@@ -57,8 +57,10 @@
                 let birthday = `${this.pickMonth}-${this.pickDay}`;
                 await this.$api.updateBirthday(email, birthday);
                 this.$user.birth = `${this.pickMonth}월 ${this.pickDay}일`;
-                await this.$router.push({name: 'userProfile'});
-                this.$emit('close');
+                this.$user.birthRaw = birthday;
+                await this.$router.push({name: 'friendsTap'});
+                await this.$emit('close');
+
             }
         }
     }
