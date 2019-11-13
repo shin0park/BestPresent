@@ -11,12 +11,12 @@
                     thumb_up
                 </i>
             </button>
-            <button v-on:click="onClickCategoryTap">
+            <button v-on:click="onClickRankTap">
                 <i class="material-icons">
                     cake
                 </i>
             </button>
-            <button>
+            <button v-on:click="onClickCategoryTap">
                 <i class="material-icons">
                     more_horiz
                 </i>
@@ -40,6 +40,10 @@
             onClickRecommendTap() {
                 window.scrollTo(0,0);
                 this.$router.push({name: 'recommendTap'})
+            },
+            onClickRankTap() {
+                window.scrollTo(0,0);
+                this.$router.push({name: 'rankTap'})
             },
             onClickCategoryTap() {
                 window.scrollTo(0,0);

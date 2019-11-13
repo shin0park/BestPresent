@@ -2,19 +2,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import friendsTap from "./views/friends/friendsTap"
 import recommendTap from "./views/recommend/recommendTap"
-import categoryTap from "./views/category/categoryTap"
+import rankTap from "./views/rank/rankTap"
 import userProfile from "./views/friends/userProfile"
 import friendProfile from "./views/friends/friendProfile"
-import situationPage from "./views/category/situationPage"
-import birthdayRank from './views/category/situationPages/birthdayRank'
-import anniversaryRank from './views/category/situationPages/anniversaryRank'
-import schoolRank from './views/category/situationPages/schoolRank'
-import weddingRank from './views/category/situationPages/weddingRank'
-import babyRank from './views/category/situationPages/babyRank'
-import cheapRank from './views/category/situationPages/cheapRank'
-import expensiveRank from './views/category/situationPages/expensiveRank'
-import christmasRank from './views/category/situationPages/christmasRank'
+import situationPage from "./views/rank/situationPage"
+import birthdayRank from './views/rank/situationPages/birthdayRank'
+import anniversaryRank from './views/rank/situationPages/anniversaryRank'
+import schoolRank from './views/rank/situationPages/schoolRank'
+import weddingRank from './views/rank/situationPages/weddingRank'
+import babyRank from './views/rank/situationPages/babyRank'
+import cheapRank from './views/rank/situationPages/cheapRank'
+import expensiveRank from './views/rank/situationPages/expensiveRank'
+import christmasRank from './views/rank/situationPages/christmasRank'
 import settingTap from './views/setting/settingTap'
+import categoryTap from './views/category/categoryTap'
 Vue.use(VueRouter);
 //
 export default new VueRouter({
@@ -31,9 +32,9 @@ export default new VueRouter({
             component: recommendTap
         },
         {
-            name: 'categoryTap',
-            path: '/categoryTap',
-            component: categoryTap
+            name: 'rankTap',
+            path: '/rankTap',
+            component: rankTap
         },
         {
             name: 'userProfile',
@@ -103,6 +104,11 @@ export default new VueRouter({
             name: 'settingTap',
             path: '/settingTap',
             component: settingTap
+        },
+        {
+            name: 'categoryTap',
+            path: '/categoryTap',
+            component: categoryTap
         }
     ]
 })
