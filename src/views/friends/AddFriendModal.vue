@@ -51,8 +51,26 @@
                 this.$user.friendsList = friendsList;
                 const birthdayList = await this.$api.addBirthdayFriend(email);
                 this.$user.birthdayList = birthdayList;
+                this.$user.friendProfile = [];
+                this.$user.birthdayProfile = [];
+                for(let i = 0; i < friendsList.length; i++){
+                    if (friendsList[i].profile === false || friendsList[i].profile === "false") {
+                        this.$user.friendProfile.push(await this.$storage.getUrl(`image/profile/defalut_profile.png`));
+                    } else {
+                        this.$user.friendProfile.push(await this.$storage.getUrl(`image/profile/${friendsList[i].id}`));
+                    }
+                }
+                this.$user.birthdayList = birthdayList;
+                for(let i = 0; i < birthdayList.length; i++){
+                    if (birthdayList[i].profile === false || birthdayList[i].profile === "false") {
+                        this.$user.birthdayProfile.push(await this.$storage.getUrl(`image/profile/defalut_profile.png`));
+                    } else {
+                        this.$user.birthdayProfile.push(await this.$storage.getUrl(`image/profile/${birthdayList[i].id}`));
+                    }
+                }
                 this.$emit('close');
                 await this.$router.push({name: 'settingTap'});
+                await this.$router.push({name: 'friendsTap'});
             }
         }
     }
