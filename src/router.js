@@ -16,6 +16,7 @@ import expensiveRank from './views/rank/situationPages/expensiveRank'
 import christmasRank from './views/rank/situationPages/christmasRank'
 import settingTap from './views/setting/settingTap'
 import categoryTap from './views/category/categoryTap'
+import iframePage from './views/rank/iframePage'
 Vue.use(VueRouter);
 //
 export default new VueRouter({
@@ -109,6 +110,12 @@ export default new VueRouter({
             name: 'categoryTap',
             path: '/categoryTap',
             component: categoryTap
+        },
+        {
+            name: 'iframePage',
+            path: '/iframePage',
+            component: iframePage,
+            props: true
         }
     ]
 })

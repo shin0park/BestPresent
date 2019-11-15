@@ -45,6 +45,27 @@
                         <label for="etcRelationship">기타</label>
                     </template>
                 </li>
+                <li class="recommendType">
+                    <h2 class="recommendTypeTitle">취미</h2>
+                    <template>
+                        <input type="radio" id="travel" name="hobby" value="travel">
+                        <label for="travel">여행</label>
+                        <input type="radio" id="sports" name="hobby" value="sports">
+                        <label for="sports">스포츠</label>
+                        <input type="radio" id="music" name="hobby" value="music">
+                        <label for="music">음악</label>
+                        <input type="radio" id="game" name="hobby" value="game">
+                        <label for="game">게임</label>
+                        <input type="radio" id="alcohol" name="hobby" value="alcohol">
+                        <label for="alcohol">음주</label>
+                        <input type="radio" id="culture" name="hobby" value="culture">
+                        <label for="culture">문화생활</label>
+                        <input type="radio" id="book" name="hobby" value="book">
+                        <label for="book">독서</label>
+                        <input type="radio" id="etcHobby" name="hobby" value="etcHobby">
+                        <label for="etcHobby">기타</label>
+                    </template>
+                </li>
             </ul>
             <button class="recommendBtn" v-on:click="onRecommend">추천받기</button>
         </div>
@@ -68,11 +89,11 @@
                         checkedArr.push(v.getAttribute('value'));
                     }
                 });
-                if(checkedArr.length<3) {
+                if(checkedArr.length<4) {
                     alert('모두 체크해주세요');
                     return;
                 }
-                alert(checkedArr)
+
             }
         }
     }
@@ -85,7 +106,7 @@
         /*position: relative;*/
         padding: 20px;
         border-radius: 22px;
-        height: 500px;
+        /*height: 500px;*/
         box-sizing: border-box;
         box-shadow: 2px 2px 6px #bdbdbd;
     }
@@ -116,6 +137,7 @@
         display: inline-block;
         border: 1px solid #E61923;
         border-radius: 4px;
+        margin-bottom: 6px;
         width: 40px;
         height: 16px;
         background-color: white;
