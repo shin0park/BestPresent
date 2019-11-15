@@ -31,8 +31,11 @@
             </div>
             <div>
                 <h2 class="title">받고 싶은 선물</h2>
-                <wish-user-present v-for="(present,index) in userWishPresent" :key="index"
-                                   :present-index="index"></wish-user-present>
+                <div>
+                    <wish-user-present v-for="(item, index) in items" v-bind:key="item.name" v-bind:itemdata="item" v-bind:itemindex="index"></wish-user-present>
+                </div>
+<!--                <wish-user-present v-for="(present,index) in userWishPresent" :key="index"-->
+<!--                                   :present-index="index"></wish-user-present>-->
             </div>
         </section>
     </div>
@@ -41,7 +44,7 @@
 <script>
     import {SET_USER_PROFILE} from '../../store'
     import store from '../../store'
-    import wishUserPresent from './wishUserPresent'
+    import wishUserPresent from './wishFriendPresent'
     import birthdayModal from './birthdayModal'
     import profile_img from '../../assets/defalut_profile.png';
 
@@ -101,6 +104,8 @@
             return {
                 showModal: false,
                 file: this.$user.profile,
+                items : [],
+                email : this.$user.email,
 
             }
         },
@@ -110,7 +115,7 @@
             },
             async onClickProfile() {
                 let profileImgEl = document.querySelector(".profileImgEl");
-                const email = this.$user.email;
+                const email = this.email;
                 //await this.$api.updateProfile(email, profile_img);
                 if (this.file !== this.$user.profile) {
                     profileImgEl.src = URL.createObjectURL(this.file);
@@ -118,6 +123,11 @@
                 }
 
             }
+        },
+        async mounted() {
+            const itemList = await this.$api.readPresent(this.email);
+            this.items = itemList;
+            console.log(this.items);
         },
 
     }

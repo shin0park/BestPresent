@@ -22,19 +22,23 @@
     export default {
         data() {
             return {
-
+                //itemdata:
             }
         },
         props: {
             'itemdata': Object,
-            'itemindex': Number
+            'itemindex': Number,
+            'type': String,
         },
         methods: {
             goItemSite(address) {
                 window.open(address, '_blank');
             },
             addCart(itemdata) {
-                console.log(itemdata);
+                console.log("add cart");
+                console.log(typeof itemdata);
+                console.log(this.type);
+                this.$api.addPresent(this.$user.email, itemdata, this.type);
             }
         }
     }

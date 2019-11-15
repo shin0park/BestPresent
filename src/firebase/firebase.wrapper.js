@@ -84,7 +84,7 @@ const dataModule = {
                     data.friendImg = storageModule.getUrl(`image/profile/${doc.id}`);
                 }
 
-                res.push(data)
+                res.push(data);
             });
         return res;
     },
@@ -164,6 +164,11 @@ const dataModule = {
             profile: friendProfile,
         });
     },
+    addPresent: async (email, itemData, type) => {
+        let item = await dataModule.readOneCBirth(type, itemData.productId);
+        await console.log("add present "+item);
+        await resources.database.collection('Users').doc(email).collection('PresentList').doc(itemData.productId).set(item);
+    },
     updateProfile: async (email, imgFile) => {
         await storageModule.upload(`image/profile/${email}`, imgFile);
         await resources.database.collection('Users').doc(email).update({
@@ -178,11 +183,31 @@ const dataModule = {
             birth: birthday
         });
     },
-    readCBirth: async () => {
-        let birthItems = await resources.database.collection('Products').doc('case').collection('c_birth').get();
+    readPresent: async (email) => {
+        let birthItems = await resources.database.collection('Users').doc(email).collection('PresentList').get();
         birthItems = birthItems.docs.map(el => el.data());
         return birthItems;
-    }
+    },
+    readProducts: async (type) => {
+        let birthItems = await resources.database.collection('Products').doc('case').collection(type).get();
+        birthItems = birthItems.docs.map(el => el.data());
+        return birthItems;
+    },
+    readOneCBirth: async (type, productId) => {
+        let data;
+        const res = [];
+        (await resources.database.collection('Products').doc('case').collection(type).get())
+            .forEach(doc => {
+                data = doc.data();
+                if (data.productId === productId) {
+                    console.log("read one birth");
+                    console.log(data);
+                    //res.push(data);
+                }
+            });
+        //let item = await resources.database.collection('Products').doc('case').collection(type).get(productId);
+        return data;
+    },
 };
 
 export {authModule, dataModule, storageModule};
