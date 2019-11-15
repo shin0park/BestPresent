@@ -30,8 +30,11 @@
             'itemindex': Number
         },
         methods: {
+            // goItemSite(address) {
+            //     window.open(address, '_blank');
+            // },
             goItemSite(address) {
-                window.open(address, '_blank');
+                this.$router.push({name: 'iframePage', params: {'address': address}});
             },
             addCart(itemdata) {
                 console.log(itemdata);
@@ -41,6 +44,11 @@
 </script>
 
 <style scoped>
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
     .rankListBox {
         display: flex;
         padding: 20px 10px;
@@ -59,6 +67,7 @@
         flex-shrink: 0;
         width: 60px;
         height: 60px;
+        cursor: pointer;
     }
     .itemImg img {
         width: 100%;
@@ -72,6 +81,7 @@
         align-self: center;
         padding-left: 30px;
         min-width: 0;
+        cursor: pointer;
     }
     .itemName {
         font-size: 12px;
@@ -88,6 +98,7 @@
     }
     .itemCartBtn {
         padding: 0 10px;
+        cursor: pointer;
     }
     .itemCartBtn .material-icons {
         font-size: 21px;
