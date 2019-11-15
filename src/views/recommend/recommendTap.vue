@@ -3,19 +3,22 @@
         <section class="recommendTap">
             <h1 class="title">어떤 분에게 선물하시나요?</h1>
             <recommend-option-box></recommend-option-box>
+            <recommend-list></recommend-list>
         </section>
     </div>
 </template>
 
 <script>
     import recommendOptionBox from './recommendOptionBox'
+    import recommendList from './recommendList'
     export default {
         components: {
-            'recommendOptionBox': recommendOptionBox
+            'recommendOptionBox': recommendOptionBox,
+            'recommendList': recommendList
         },
         data() {
             return {
-
+                items: []
             }
         },
         methods: {
