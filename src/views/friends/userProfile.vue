@@ -21,7 +21,12 @@
                     <p class="userDday">D - {{dDay}}</p>
                 </div>
                 <birthdayModal v-if="showModal" @close="showModal = false">
-                    <h3 slot="header">생일 정보 입력</h3>
+                    <h3 slot="header" style="flex-grow: 1">생일 정보 입력</h3>
+                    <button slot="header" class="clearBtn" @click="showModal = false">
+                        <i class="material-icons">
+                            clear
+                        </i>
+                    </button>
                 </birthdayModal>
             </div>
             <div>

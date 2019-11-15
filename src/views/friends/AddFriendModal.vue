@@ -95,6 +95,10 @@
         font-family: Helvetica, Arial, sans-serif;
     }
 
+    .modal-header {
+        display: flex;
+    }
+
     .modal-header h3 {
         margin-top: 0;
         color: #E61923;

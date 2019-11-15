@@ -6,7 +6,7 @@
 
                     <div class="modal-header">
                         <slot name="header">
-                            default header
+
                         </slot>
                     </div>
 
@@ -59,8 +59,7 @@
                 this.$user.birthRaw = birthday;
                 await this.$router.push({name: 'friendsTap'});
                 await this.$emit('close');
-
-            }
+            },
         }
     }
 </script>
@@ -101,7 +100,9 @@
         transition: all .3s ease;
         font-family: Helvetica, Arial, sans-serif;
     }
-
+    .modal-header {
+        display: flex;
+    }
     .modal-header h3 {
         margin-top: 0;
         color: #E61923;
