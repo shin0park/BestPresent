@@ -76,11 +76,11 @@
     export default {
         data() {
             return {
-
+                type:'c_birth',
             }
         },
         methods: {
-            onRecommend(e) {
+            async onRecommend(e) {
                 e.preventDefault();
                 const checkedArr = [];
                 const radioEles = document.querySelectorAll('input[type="radio"]');
@@ -94,7 +94,21 @@
                     return;
                 }
 
-            }
+                /*
+                    체크한 내용을 보내는 내용
+                */
+
+                const itemList = await this.$api.readProducts(this.type);
+                this.$emit('sendItemList', itemList);
+                // this.resetRadio();
+            },
+            // resetRadio() {
+            //     const radioEles = document.querySelectorAll('input[type="radio"]');
+            //     radioEles.forEach(v => {
+            //         v.checked = false;
+            //         v.removeAttribute('checked');
+            //     })
+            // }
         }
     }
 </script>

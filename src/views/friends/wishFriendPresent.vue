@@ -41,8 +41,8 @@
         },
         methods: {
             goItemSite(address) {
-                window.open(address, '_blank');
-            }
+                this.$router.push({name: 'iframePage', params: {'address': address}});
+            },
         },
         async mounted() {
             console.log("wish");

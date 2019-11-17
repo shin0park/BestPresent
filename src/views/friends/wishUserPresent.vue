@@ -4,7 +4,7 @@
         <div class="wishPresentInfo">
             <h3 class="wishPresentName">{{presentName}}</h3>
             <p class="wishPresentPrice">{{presentPrice}}</p>
-            <button class="wishPresentBtn">
+            <button class="wishPresentBtn" @click="goItemSite(itemdata.link)">
                 사러가기
                 <i class="material-icons">
                     card_giftcard
@@ -23,6 +23,11 @@
         },
         props: {
             presentIndex: Number
+        },
+        methods : {
+            goItemSite(address) {
+                this.$router.push({name: 'iframePage', params: {'address': address}});
+            },
         },
         computed: {
             presentName() {

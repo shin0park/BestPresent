@@ -2,8 +2,10 @@
     <div>
         <section class="recommendTap">
             <h1 class="title">어떤 분에게 선물하시나요?</h1>
-            <recommend-option-box></recommend-option-box>
-            <recommend-list></recommend-list>
+            <recommend-option-box @sendItemList="updateItems"></recommend-option-box>
+            <div class="recommendList">
+                <recommend-list v-for="(item, index) in items" v-bind:key="item.name" v-bind:itemdata="item" v-bind:itemindex="index"></recommend-list>
+            </div>
         </section>
     </div>
 </template>
@@ -22,8 +24,11 @@
             }
         },
         methods: {
-
-        }
+            updateItems(itemList) {
+                this.items = itemList;
+                console.log(this.items)
+            }
+        },
     }
 </script>
 
@@ -39,5 +44,8 @@
         font-size: 21px;
         font-weight: 900;
     }
-
+    .recommendList {
+        margin-top: 30px;
+        box-shadow: 2px 2px 6px #bdbdbd;
+    }
 </style>
