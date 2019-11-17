@@ -166,7 +166,7 @@ const dataModule = {
     },
     addPresent: async (email, itemData, type) => {
         let item = await dataModule.readOneCBirth(type, itemData.productId);
-        await console.log("add present "+item);
+        await console.log("add present "+item.title);
         await resources.database.collection('Users').doc(email).collection('PresentList').doc(itemData.productId).set(item);
     },
     updateProfile: async (email, imgFile) => {
@@ -202,11 +202,11 @@ const dataModule = {
                 if (data.productId === productId) {
                     console.log("read one birth");
                     console.log(data);
-                    //res.push(data);
+                    res.push(data);
                 }
             });
         //let item = await resources.database.collection('Products').doc('case').collection(type).get(productId);
-        return data;
+        return res[0];
     },
 };
 

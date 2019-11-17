@@ -34,11 +34,12 @@
             goItemSite(address) {
                 this.$router.push({name: 'iframePage', params: {'address': address}});
             },
-            addCart(itemdata) {
+            async addCart(itemdata) {
                 console.log("add cart");
-                console.log(typeof itemdata);
-                console.log(this.type);
-                this.$api.addPresent(this.$user.email, itemdata, this.type);
+                console.log(typeof this.itemdata);
+                console.log(this.itemdata.title);
+                const item = await this.itemdata;
+                await this.$api.addPresent(this.$user.email, item, this.type);
             }
         }
     }
