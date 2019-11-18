@@ -32,21 +32,18 @@
             <div>
                 <h2 class="title">받고 싶은 선물</h2>
                 <div>
-                    <wish-user-present v-for="(item, index) in items" v-bind:key="item.name" v-bind:itemdata="item" v-bind:itemindex="index"></wish-user-present>
+                    <wish-user-present v-for="(item, index) in items" v-bind:email="email" v-bind:key="item.name"
+                                       v-bind:itemdata="item"
+                                       v-bind:itemindex="index"></wish-user-present>
                 </div>
-<!--                <wish-user-present v-for="(present,index) in userWishPresent" :key="index"-->
-<!--                                   :present-index="index"></wish-user-present>-->
             </div>
         </section>
     </div>
 </template>
 
 <script>
-    import {SET_USER_PROFILE} from '../../store'
-    import store from '../../store'
-    import wishUserPresent from './wishFriendPresent'
+    import wishUserPresent from './wishUserPresent'
     import birthdayModal from './birthdayModal'
-    import profile_img from '../../assets/defalut_profile.png';
 
     export default {
         components: {
@@ -62,9 +59,6 @@
             },
             userBirthday() {
                 return this.$user.birth
-            },
-            userWishPresent() {
-                return this.$user.present_list;
             },
             dDay() {
                 let dDay;
@@ -104,8 +98,8 @@
             return {
                 showModal: false,
                 file: this.$user.profile,
-                items : [],
-                email : this.$user.email,
+                items: [],
+                email: this.$user.email,
 
             }
         },
@@ -116,7 +110,6 @@
             async onClickProfile() {
                 let profileImgEl = document.querySelector(".profileImgEl");
                 const email = this.email;
-                //await this.$api.updateProfile(email, profile_img);
                 if (this.file !== this.$user.profile) {
                     profileImgEl.src = URL.createObjectURL(this.file);
                     await this.$api.updateProfile(email, this.file);
@@ -129,6 +122,12 @@
             this.items = itemList;
             console.log(this.items);
         },
+        async updated() {
+            const itemList = await this.$api.readPresent(this.email);
+            this.items = itemList;
+            console.log("update");
+        }
+
 
     }
 </script>

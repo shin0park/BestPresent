@@ -165,8 +165,8 @@ const dataModule = {
         });
     },
     addPresent: async (email, itemData, type) => {
-        let item = await dataModule.readOneCBirth(type, itemData.productId);
-        await console.log("add present "+item.title);
+        let item = await dataModule.readProductOne(type, itemData.productId);
+        await console.log("add present " + item.title);
         await resources.database.collection('Users').doc(email).collection('PresentList').doc(itemData.productId).set(item);
     },
     updateProfile: async (email, imgFile) => {
@@ -185,15 +185,18 @@ const dataModule = {
     },
     readPresent: async (email) => {
         let birthItems = await resources.database.collection('Users').doc(email).collection('PresentList').get();
-        birthItems = birthItems.docs.map(el => el.data());
-        return birthItems;
+        if (birthItems !== null) {
+            birthItems = birthItems.docs.map(el => el.data());
+            return birthItems;
+        }
+
     },
     readProducts: async (type) => {
         let birthItems = await resources.database.collection('Products').doc('case').collection(type).get();
         birthItems = birthItems.docs.map(el => el.data());
         return birthItems;
     },
-    readOneCBirth: async (type, productId) => {
+    readProductOne: async (type, productId) => {
         let data;
         const res = [];
         (await resources.database.collection('Products').doc('case').collection(type).get())
@@ -207,6 +210,13 @@ const dataModule = {
             });
         //let item = await resources.database.collection('Products').doc('case').collection(type).get(productId);
         return res[0];
+    },
+    deletePresent: async (productId, userEmail) => {
+        resources.database.collection('Users').doc(userEmail).collection('PresentList').doc(productId).delete().then(function () {
+            console.log("Document successfully deleted!");
+        }).catch(function (error) {
+            console.error("Error removing document: ", error);
+        });
     },
 };
 

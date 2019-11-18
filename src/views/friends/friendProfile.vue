@@ -13,8 +13,11 @@
             </div>
             <div>
                 <h2 class="title">받고 싶은 선물</h2>
-                <wish-friend-present v-for="(present,index) in friendWishPresent" :key="index" :present-index="index"
-                                     :friend-index="friendIndex"></wish-friend-present>
+                <div>
+                    <wish-friend-present v-for="(item, index) in items" v-bind:key="item.name" v-bind:itemdata="item"
+                                         v-bind:itemindex="index"></wish-friend-present>
+                </div>
+
             </div>
         </section>
     </div>
@@ -64,13 +67,6 @@
                     }
                 }
             },
-            friendWishPresent() {
-                if (this.$route.params.isBirthday) {
-                    return this.$user.birthdayList[this.birthdayIndex].presentlist;
-                } else {
-                    return this.$user.friendsList[this.friendIndex].presentlist;
-                }
-            },
             dDay() {
                 let dDay;
                 let today = new Date();
@@ -117,11 +113,16 @@
             return {
                 friendIndex: this.$route.params.index,
                 birthdayIndex: this.$route.params.index,
+                items: [],
             }
         },
         methods: {},
         async mounted() {
-        }
+            const itemList = await this.$api.readPresent(this.$user.friendsList[this.friendIndex].id);
+            this.items = itemList;
+            console.log(this.items);
+        },
+
     }
 </script>
 

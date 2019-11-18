@@ -1,13 +1,12 @@
 <template>
     <div class="wishPresent">
-<!--        <span class="wishPresentImg"><img :src="presentImg"></span>-->
         <span class="wishPresentImg">
                 <img v-bind:src="itemdata.image"> <!-- itemdata.imgSrc -->
             </span>
         <div class="wishPresentInfo" >
             <h3 class="wishPresentName">{{itemdata.title}}</h3>
             <p class="wishPresentPrice">{{itemdata.lprice}}원</p>
-            <button class="wishPresentBtn" v-on:click="goItemSite(itemdata.link)">>
+            <button class="wishPresentBtn" v-on:click="goItemSite(itemdata.link)">
                 선물하기
                 <i class="material-icons">
                     card_giftcard
@@ -23,21 +22,8 @@
             return {}
         },
         props: {
-            //presentIndex: Number,
-            //friendIndex: this.$route.params.index,
             'itemdata': Object,
             'itemindex': Number,
-        },
-        computed: {
-            // presentName() {
-            //     return this.$store.state.friendsList[this.friendIndex].presentlist[this.presentIndex].itemName;
-            // },
-            // presentPrice() {
-            //     return this.$store.state.friendsList[this.friendIndex].presentlist[this.presentIndex].price;
-            // },
-            // presentImg() {
-            //     return this.$store.state.friendsList[this.friendIndex].presentlist[this.presentIndex].image;
-            // }
         },
         methods: {
             goItemSite(address) {
