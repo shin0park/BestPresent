@@ -100,15 +100,15 @@
 
                 const itemList = await this.$api.readProducts(this.type);
                 this.$emit('sendItemList', itemList);
-                // this.resetRadio();
+                this.resetRadio();
             },
-            // resetRadio() {
-            //     const radioEles = document.querySelectorAll('input[type="radio"]');
-            //     radioEles.forEach(v => {
-            //         v.checked = false;
-            //         v.removeAttribute('checked');
-            //     })
-            // }
+            resetRadio() {
+                const radioEles = document.querySelectorAll('input[type="radio"]');
+                radioEles.forEach(v => {
+                    v.checked = false;
+                    v.removeAttribute('checked');
+                })
+            }
         }
     }
 </script>

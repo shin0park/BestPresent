@@ -4,7 +4,7 @@
             <h1 class="title">어떤 선물을 찾으시나요?</h1>
             <div class="situationBox">
                 <ul>
-                    <li class="situationList" v-for="(situation, situationIndex) in situations" v-on:click="onClickSituation(situationIndex)">
+                    <li class="situationList" v-for="(situation, situationIndex) in situations" v-on:click="onClickSituation(situationIndex, situation.type)">
                         <i class="material-icons">
                             {{situation.icon}}
                         </i>
@@ -20,13 +20,13 @@
     export default {
         data() {
             return {
-                situations: [{icon: 'cake', name: '생일'}, {icon: 'favorite', name: '기념일(애인)'},{icon: 'school', name: '입학/졸업'},{icon: 'house', name: '결혼/집들이'},
-                        {icon: 'child_care', name: '출산/임신'}, {icon: 'money_off', name: '저렴한 선물'},{icon: 'monetization_on', name: '고급 선물'},{icon: 'notifications', name: '크리스마스'},]
+                situations: [{icon: 'cake', name: '생일', type: 'c_birth'}, {icon: 'favorite', name: '기념일(애인)', type: 'c_anniversary'},{icon: 'school', name: '입학/졸업', type: 'c_school'},{icon: 'house', name: '결혼/집들이', type: 'c_wedding'},
+                        {icon: 'child_care', name: '출산/임신', type: 'c_baby'}, {icon: 'money_off', name: '저렴한 선물', type: 'c_cheap'},{icon: 'monetization_on', name: '고급 선물', type: 'c_expensive'},{icon: 'notifications', name: '크리스마스', type: 'c_xmas'},]
             }
         },
         methods: {
-            onClickSituation(situationIndex) {
-                this.$router.push({name: 'situationPage', params: {"index": situationIndex}})
+            onClickSituation(situationIndex, type) {
+                this.$router.push({name: 'situationPage', params: {"index": situationIndex, "type": type}})
             }
         }
     }

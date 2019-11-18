@@ -5,18 +5,23 @@
 </template>
 
 <script>
-  import rankList from '../rankList'
+  import rankList from './rankList'
   export default {
     data() {
       return {
         items : [],
-        type:'c_birth',
       }
+    },
+    props: {
+      type: String
     },
     async mounted() {
         const itemList = await this.$api.readProducts(this.type);
         this.items = itemList;
-        console.log(this.items);
+    },
+    async updated() {
+      const itemList = await this.$api.readProducts(this.type);
+      this.items = itemList;
     },
     components: {
       'rankList': rankList
