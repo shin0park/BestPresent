@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import mainTap from "./views/App"
 import friendsTap from "./views/friends/friendsTap"
 import recommendTap from "./views/recommend/recommendTap"
 import rankTap from "./views/rank/rankTap"
@@ -15,6 +16,11 @@ Vue.use(VueRouter);
 export default new VueRouter({
     // mode: 'history',
     routes: [
+        {
+            name: 'mainTap',
+            path: '/',
+            component: mainTap
+        },
         {
             name: 'friendsTap',
             path: '/friendsTap',

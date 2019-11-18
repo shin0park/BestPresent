@@ -591,7 +591,7 @@ export default new Vuex.Store({
                 }]
             },
         ],
-        settingList: ['공지사항', '버전', '제작자 정보'],
+        settingList: ['공지사항', '버전', '제작자 정보','로그아웃'],
         femaleItems: {
             "lastBuildDate": "Wed, 02 Oct 2019 20:17:47 +0900",
             "total": 9723262,

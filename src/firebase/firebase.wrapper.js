@@ -27,7 +27,8 @@ providerFB.addScope('user_gender');
 
 const authModule = {
     googleLogin: async () => await resources.auth.signInWithPopup(resources.provider),
-    facebookLogin: async () => await firebase.auth().signInWithPopup(providerFB)
+    facebookLogin: async () => await firebase.auth().signInWithPopup(providerFB),
+    googleLogout: async () => await resources.auth.signOut(),
 };
 const storageModule = {
     upload: async (path, file) => await resources.storage.ref(path).put(file),
