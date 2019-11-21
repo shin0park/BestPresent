@@ -203,14 +203,14 @@
     }
     input[type='range']::-webkit-slider-runnable-track {
         width: 200px;
-        height: 10px;
+        height: 5px;
         background: #AAA;
     }
     input[type='range']::-webkit-slider-thumb {
         position: relative;
         height: 20px;
         width: 20px;
-        margin-top: -5px;
+        margin-top: -8px;
         background: steelblue;
         border-radius: 50%;
         border: 2px solid white;
@@ -233,7 +233,7 @@
         position: absolute;
         height: 20px;
         width: 20px;
-        margin-top: -5px;
+        margin-top: -5.5px;
         background: steelblue;
         border-radius: 50%;
         border: 2px solid white;
