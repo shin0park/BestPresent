@@ -478,7 +478,6 @@
         text-align: center;
         font-size: 14px;
         font-weight: 900;
-        margin-top: 100px;
     }
     tr {
         height: 90px;

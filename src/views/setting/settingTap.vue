@@ -59,7 +59,7 @@
   }
   .userProfileImg img {
     width: 100%;
-    height: 100%;
+    height: 70px;
     border-radius: 50%;
   }
   .userInfo {

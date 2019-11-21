@@ -1,11 +1,9 @@
 <template>
-    <div class="settingList">
-        <button @click="logout()">
-            <span class="listName">{{settingListName}}</span>
-            <span class="listIcon">
-      <i class="material-icons">chevron_right</i>
-    </span>
-        </button>
+    <div class="settingList" @click="logout()">
+        <span class="listName">{{settingListName}}</span>
+        <span class="listIcon">
+            <i class="material-icons">chevron_right</i>
+        </span>
     </div>
 </template>
 
