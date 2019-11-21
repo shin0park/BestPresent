@@ -33,7 +33,7 @@ app.use(session({
 app.use(flash());
 
 app.get('/', function (req, res) {
-    res.render('index');
+    res.render('main');
 });
 
 app.use('/auth', authRouter);

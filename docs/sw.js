@@ -2,15 +2,12 @@
 var CACHE_NAME = 'pwa-offline-v1';
 // 캐싱할 파일 목록
 var filesToCache = [
-    '/**.*',
+    '/',
     '/css/app.css',
     '/images/icons/192px.png',
     '/images/icons/512px.png',
     '/favicon.png',
     '/manifest.json',
-    '/',
-    ''
-
 ];
 //서비스워커 설치(웹 자원 캐싱)
 //self 란 serviceworker 파일의 window 를 가리킨다 window-page 에 대한 정보
@@ -62,4 +59,4 @@ self.addEventListener('activate', function (event) {
       })
     );
     
-})
+});
