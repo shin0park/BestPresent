@@ -15,7 +15,7 @@
     props: {
       type: String
     },
-    async mounted() {
+    async created() {
         const itemList = await this.$api.readProducts('case', this.type);
         this.items = itemList;
     },

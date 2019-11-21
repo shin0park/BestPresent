@@ -66,6 +66,14 @@
                         <label for="etcHobby">기타</label>
                     </template>
                 </li>
+                <li>
+                    <label for="high" class="price">{{high}} 만원 이하</label>
+                    <div class="sliderWrap">
+                        <span class="sliderBtn">
+                        </span>
+                        <input name="high" id="high" type="range" min="0" max="100" v-model="high">
+                    </div>
+                </li>
             </ul>
             <button class="recommendBtn" v-on:click="onRecommend">추천받기</button>
         </div>
@@ -77,6 +85,7 @@
         data() {
             return {
                 type:'c_birth',
+                high: 0
             }
         },
         methods: {
@@ -98,7 +107,7 @@
                     체크한 내용을 보내는 내용
                 */
 
-                const itemList = await this.$api.readProducts(this.type);
+                const itemList = await this.$api.readProducts('case',this.type);
                 this.$emit('sendItemList', itemList);
                 this.resetRadio();
             },
@@ -173,5 +182,63 @@
         font-weight: 700;
         color: white;
         background-color: #E61923;
+    }.price {
+         border: 1px solid #bdbdbd;
+         border-radius: 0;
+         color: #212121;
+         width: 80px;
+         height: 20px;
+         line-height: 20px;
+     }
+    input[type='range'] {
+        width: 210px;
+        height: 30px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    input[type='range'],
+    input[type='range']::-webkit-slider-runnable-track,
+    input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+    }
+    input[type='range']::-webkit-slider-runnable-track {
+        width: 200px;
+        height: 10px;
+        background: #AAA;
+    }
+    input[type='range']::-webkit-slider-thumb {
+        position: relative;
+        height: 20px;
+        width: 20px;
+        margin-top: -5px;
+        background: steelblue;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+    input[type='range']::-webkit-slider-thumb::before {
+        position: absolute;
+        content: '';
+        height: 10px; /* equal to height of runnable track */
+        width: 500px; /* make this bigger than the widest range input element */
+        left: -502px; /* this should be -2px - width */
+        top: 8px; /* don't change this */
+        background: #777;
+    }
+    .sliderWrap {
+        position: relative;
+        height: 40px;
+    }
+    .sliderBtn {
+        display: inline-block;
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        margin-top: -5px;
+        background: steelblue;
+        border-radius: 50%;
+        border: 2px solid white;
+        box-sizing: border-box;
+        top: 10px;
+        left: -2px;
     }
 </style>
