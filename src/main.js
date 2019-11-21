@@ -12,6 +12,7 @@ Router.prototype.push = function push(location) {
     return routerPush.call(this, location).catch(error=> error)
 };
 
+
 Vue.prototype.$_ = _;
 Vue.prototype.$auth = authModule;
 Vue.prototype.$api = dataModule;
