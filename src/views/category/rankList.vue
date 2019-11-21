@@ -39,7 +39,7 @@
                 console.log(typeof this.itemdata);
                 console.log(this.itemdata.title);
                 const item = await this.itemdata;
-                await this.$api.addPresent(this.$user.email, item, 'case', this.type);
+                await this.$api.addPresent(this.$user.email, item, 'category', this.type);
             }
         }
     }

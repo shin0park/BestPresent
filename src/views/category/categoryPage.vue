@@ -1,17 +1,18 @@
 <template>
-    <div class="situationPage">
-        <situation-nav v-bind:listIndex="listIndex" @sendType="updateType"></situation-nav>
+    <div class="categoryPage">
+        <category-nav v-bind:listIndex="listIndex" @sendType="updateType"></category-nav>
         <rank-page v-bind:type="type"></rank-page>
     </div>
 </template>
 
 <script>
-    import rankPage from './rankPage';
-    import situationNav from './situationNav'
+    import categoryNav from './categoryNav'
+    import rankPage from './rankPage'
     export default {
+        name: "listPage",
         components: {
-            'rankPage': rankPage,
-            'situationNav': situationNav
+            'categoryNav': categoryNav,
+            'rankPage': rankPage
         },
         data() {
             return {
@@ -19,20 +20,16 @@
                 type: this.$route.params.type
             }
         },
-        computed: {
-
-        },
         methods: {
             updateType(newType) {
                 this.type = newType;
             }
         },
-
     }
 </script>
 
 <style scoped>
-    .situationPage {
+    .categoryPage {
         padding: 0 16px;
         margin-top: 30px;
         width: 100%;

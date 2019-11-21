@@ -8,7 +8,7 @@
             <li class="situationNav">출산/임신</li>
             <li class="situationNav">저렴한 선물</li>
             <li class="situationNav">고급 선물</li>
-            <li class="situationNav">크리스마스 선물<</li>
+            <li class="situationNav">크리스마스 선물</li>
         </ul>
     </div>
 </template>

@@ -11,6 +11,7 @@ import rankPage from './views/rank/rankPage'
 import settingTap from './views/setting/settingTap'
 import categoryTap from './views/category/categoryTap'
 import iframePage from './views/rank/iframePage'
+import categoryPage from './views/category/categoryPage'
 Vue.use(VueRouter);
 //
 export default new VueRouter({
@@ -72,6 +73,12 @@ export default new VueRouter({
             name: 'iframePage',
             path: '/iframePage',
             component: iframePage,
+            props: true
+        },
+        {
+            name: 'categoryPage',
+            path: '/categoryPage',
+            component: categoryPage,
             props: true
         }
     ]

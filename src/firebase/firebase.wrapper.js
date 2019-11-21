@@ -165,8 +165,8 @@ const dataModule = {
             profile: friendProfile,
         });
     },
-    addPresent: async (email, itemData, type) => {
-        let item = await dataModule.readProductOne(type, itemData.productId);
+    addPresent: async (email, itemData, docName, type) => {
+        let item = await dataModule.readProductOne(docName, type, itemData.productId);
         await console.log("add present " + item.title);
         await resources.database.collection('Users').doc(email).collection('PresentList').doc(itemData.productId).set(item);
     },
@@ -192,15 +192,15 @@ const dataModule = {
         }
 
     },
-    readProducts: async (type) => {
-        let birthItems = await resources.database.collection('Products').doc('case').collection(type).get();
+    readProducts: async (docName, type) => {
+        let birthItems = await resources.database.collection('Products').doc(docName).collection(type).get();
         birthItems = birthItems.docs.map(el => el.data());
         return birthItems;
     },
-    readProductOne: async (type, productId) => {
+    readProductOne: async (docName, type, productId) => {
         let data;
         const res = [];
-        (await resources.database.collection('Products').doc('case').collection(type).get())
+        (await resources.database.collection('Products').doc(docName).collection(type).get())
             .forEach(doc => {
                 data = doc.data();
                 if (data.productId === productId) {
