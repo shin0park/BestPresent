@@ -1,14 +1,14 @@
 <template>
     <div class="title">
         <ul>
-            <li class="situationNav" @click="clickNav('c_birth', 0)">생일</li>
-            <li class="situationNav" @click="clickNav('c_anniversary', 1)">기념일(애인)</li>
-            <li class="situationNav">입학/졸업</li>
-            <li class="situationNav">결혼/집들이</li>
-            <li class="situationNav">출산/임신</li>
-            <li class="situationNav">저렴한 선물</li>
-            <li class="situationNav">고급 선물</li>
-            <li class="situationNav">크리스마스 선물</li>
+            <li class="situationNav" @click="clickNav('birth', 0)">생일</li>
+            <li class="situationNav" @click="clickNav('anniversary', 1)">기념일(애인)</li>
+            <li class="situationNav" @click="clickNav('graduation', 2)">입학/졸업</li>
+            <li class="situationNav" @click="clickNav('marry', 3)">결혼/집들이</li>
+            <li class="situationNav" @click="clickNav('baby', 4)">출산/임신</li>
+            <li class="situationNav" @click="clickNav('cheap', 5)">저렴한 선물</li>
+            <li class="situationNav" @click="clickNav('expensive', 6)">고급 선물</li>
+            <li class="situationNav" @click="clickNav('christmas', 7)">크리스마스 선물</li>
         </ul>
     </div>
 </template>

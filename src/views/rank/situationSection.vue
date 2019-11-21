@@ -20,8 +20,8 @@
     export default {
         data() {
             return {
-                situations: [{icon: 'cake', name: '생일', type: 'c_birth'}, {icon: 'favorite', name: '기념일(애인)', type: 'c_anniversary'},{icon: 'school', name: '입학/졸업', type: 'c_school'},{icon: 'house', name: '결혼/집들이', type: 'c_wedding'},
-                        {icon: 'child_care', name: '출산/임신', type: 'c_baby'}, {icon: 'money_off', name: '저렴한 선물', type: 'c_cheap'},{icon: 'monetization_on', name: '고급 선물', type: 'c_expensive'},{icon: 'notifications', name: '크리스마스', type: 'c_xmas'},]
+                situations: [{icon: 'cake', name: '생일', type: 'birth'}, {icon: 'favorite', name: '기념일(애인)', type: 'anniversary'},{icon: 'school', name: '입학/졸업', type: 'graduation'},{icon: 'house', name: '결혼/집들이', type: 'marry'},
+                        {icon: 'child_care', name: '출산/임신', type: 'baby'}, {icon: 'money_off', name: '저렴한 선물', type: 'cheap'},{icon: 'monetization_on', name: '고급 선물', type: 'expensive'},{icon: 'notifications', name: '크리스마스', type: 'christmas'},]
             }
         },
         methods: {
