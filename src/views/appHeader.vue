@@ -4,16 +4,7 @@
             <div class="logo">
                 <a href="#" class="logoLink"><img src="../assets/logo.png"></a>
             </div>
-            <!--<button class="btnMenu">-->
-                <!--<i class="material-icons">-->
-                    <!--menu-->
-                <!--</i>-->
-            <!--</button>-->
-            <!--<button class="btnSearch">-->
-                <!--<i class="material-icons">-->
-                    <!--search-->
-                <!--</i>-->
-            <!--</button>-->
+
             <button class="btnSetting" v-on:click="onClickSettingTap">
                 <i class="material-icons">
                     settings_applications

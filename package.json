@@ -7,7 +7,9 @@
     "build": "webpack --watch",
     "start": "nodemon ./src/app.js",
     "dev-pwa": "lite-server",
-    "dev": "webpack-dev-server --hot"
+    "dev": "webpack-dev-server --hot",
+    "serve": "vue-cli-service serve",
+    "build-vue": "vue-cli-service build"
   },
   "repository": {
     "type": "git",

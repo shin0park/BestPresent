@@ -2,12 +2,14 @@
 var CACHE_NAME = 'pwa-offline-v1';
 // 캐싱할 파일 목록
 var filesToCache = [
-    '/',
+    '/**.*',
     '/css/app.css',
     '/images/icons/192px.png',
     '/images/icons/512px.png',
     '/favicon.png',
-    '/manifest.json'
+    '/manifest.json',
+    '/',
+    ''
 
 ];
 //서비스워커 설치(웹 자원 캐싱)
