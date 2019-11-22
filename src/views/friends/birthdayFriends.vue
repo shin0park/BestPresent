@@ -3,7 +3,7 @@
         <span class="friendsImg"><img v-bind:src="profileImg"></span>
         <h3 class="friendsName">{{birthdayName}}</h3>
         <span class="d-day">
-      D-day
+      D - 2
     </span>
     </div>
 </template>
@@ -47,6 +47,7 @@
     .friendsImg img {
         width: 100%;
         height: 100%;
+        border-radius: 50%;
     }
     .friendsName {
         flex-grow: 1;

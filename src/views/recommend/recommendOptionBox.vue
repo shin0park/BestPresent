@@ -99,13 +99,26 @@
                     return;
                 }
                 console.log(checkedArr);
-                /*
-                    체크한 내용을 보내는 내용
-                */
+                await this.$api.addRecommend(this.$user.email,checkedArr[1],checkedArr[0],checkedArr[2],checkedArr[3],checkedArr[4]*10000);
+                let itemList;
+                await setTimeout(function () {
+                    console.log("settimeout");
+                    itemList = this.$api.readRecommend().then(function (itemList) {
+                        this.$emit('sendItemList', itemList);
+                        console.log("itemList");
+                        console.log(itemList);
+                        this.resetRadio();
+                    }.bind(this)).catch(function (error) {
+                        console.log(error);
+                    });
+                }.bind(this),1000*4);
+                //itemList = await this.$api.readRecommend();
+                // await this.$emit('sendItemList', itemList);
+                // await console.log("itemList");
+                // await console.log(itemList);
+                // await this.resetRadio();
+                //const itemList = await this.$api.readProducts('case',this.type);
 
-                const itemList = await this.$api.readProducts('case',this.type);
-                this.$emit('sendItemList', itemList);
-                this.resetRadio();
             },
             resetRadio() {
                 const radioEles = document.querySelectorAll('input[type="radio"]');

@@ -18,7 +18,7 @@
             </button>
             <button v-on:click="onClickCategoryTap">
                 <i class="material-icons">
-                    more_horiz
+                    storefront
                 </i>
             </button>
         </footer>

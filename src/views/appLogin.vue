@@ -35,12 +35,6 @@
             }
         },
         computed: {
-            // userID() {
-            //     return this.$store.state.user.userID;
-            // },
-            // userProfile() {
-            //     return this.$store.state.user.userProfile;
-            // }
         },
         methods: {
             successLogin() {
@@ -49,6 +43,7 @@
             },
             async isUser(uid, uname) {
                 let flag = await this.$api.readUser(uid);
+                //가입
                 if (flag == null) {
                     await this.$api.addUser(uid, uname);
                     alert("가입되었습니다!");
@@ -74,7 +69,6 @@
 
                 const friendsList = await this.$api.readFriendsList(uid);
                 this.$user.friendsList = friendsList;
-                //console.log("login "+this.$user.friendsList[0].friendImg);
                 for(let i = 0; i < friendsList.length; i++){
                     if (friendsList[i].profile === false || friendsList[i].profile === "false") {
                         this.$user.friendProfile.push(await this.$storage.getUrl(`image/profile/defalut_profile.png`));

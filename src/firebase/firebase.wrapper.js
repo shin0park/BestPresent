@@ -165,6 +165,15 @@ const dataModule = {
             profile: friendProfile,
         });
     },
+    addRecommend: async (email, age, gender, relation, hobby,price) => {
+        await resources.database.collection('receiver').doc('samples').collection('sample1').doc(email).set({
+            age: age,
+            gender: gender,
+            relation: relation,
+            hobby: hobby,
+            price:price,
+        });
+    },
     addPresent: async (email, itemData, docName, type) => {
         let item = await dataModule.readProductOne(docName, type, itemData.productId);
         await console.log("add present " + item.title);
@@ -190,7 +199,11 @@ const dataModule = {
             birthItems = birthItems.docs.map(el => el.data());
             return birthItems;
         }
-
+    },
+    readRecommend: async () => {
+        let recommendItems = await resources.database.collection('receiver').doc('recommend').collection('product').get();
+        recommendItems = recommendItems.docs.map(el => el.data());
+        return recommendItems;
     },
     readProducts: async (docName, type) => {
         let birthItems = await resources.database.collection('Products').doc(docName).collection(type).get();
