@@ -5,73 +5,67 @@
                 <li class="recommendType">
                     <h2 class="recommendTypeTitle">성별</h2>
                     <template>
-                        <input type="radio" id="female" name="gender" value="female">
+                        <input type="radio" id="female" name="gender" value="-5">
                         <label for="female">여성</label>
-                        <input type="radio" id="male" name="gender" value="male">
+                        <input type="radio" id="male" name="gender" value="5">
                         <label for="male">남성</label>
                     </template>
                 </li>
                 <li class="recommendType">
                     <h2 class="recommendTypeTitle">연령대</h2>
                     <template>
-                        <input type="radio" id="ten" name="age" value="ten">
+                        <input type="radio" id="ten" name="age" value="1">
                         <label for="ten">10대</label>
-                        <input type="radio" id="twenty" name="age" value="twenty">
+                        <input type="radio" id="twenty" name="age" value="2">
                         <label for="twenty">20대</label>
-                        <input type="radio" id="thirty" name="age" value="thirty">
+                        <input type="radio" id="thirty" name="age" value="3">
                         <label for="thirty">30대</label>
-                        <input type="radio" id="forty" name="age" value="forty">
+                        <input type="radio" id="forty" name="age" value="4">
                         <label for="forty">40대</label>
-                        <input type="radio" id="fifty" name="age" value="fifty">
-                        <label for="fifty">50대</label>
-                        <input type="radio" id="sixty" name="age" value="sixty">
-                        <label for="sixty">60대 이상</label>
+                        <input type="radio" id="fifty" name="age" value="5">
+                        <label for="fifty">50대 이상</label>
                     </template>
                 </li>
                 <li class="recommendType">
                     <h2 class="recommendTypeTitle">관계</h2>
                     <template>
-                        <input type="radio" id="parent" name="relationship" value="parent">
-                        <label for="parent">부모님</label>
-                        <input type="radio" id="friend" name="relationship" value="friend">
+                        <input type="radio" id="friend" name="relation" value="1">
                         <label for="friend">친구</label>
-                        <input type="radio" id="couple" name="relationship" value="couple">
+                        <input type="radio" id="couple" name="relation" value="2">
                         <label for="couple">연인</label>
-                        <input type="radio" id="teacher" name="relationship" value="teacher">
-                        <label for="teacher">선생님</label>
-                        <input type="radio" id="colleague" name="relationship" value="colleague">
-                        <label for="colleague">직장 동료</label>
-                        <input type="radio" id="etcRelationship" name="relationship" value="etcRelationship">
+                        <input type="radio" id="parent" name="relation" value="3">
+                        <label for="parent">부모님</label>
+                        <input type="radio" id="etcRelationship" name="relation" value="4">
                         <label for="etcRelationship">기타</label>
                     </template>
                 </li>
                 <li class="recommendType">
                     <h2 class="recommendTypeTitle">취미</h2>
                     <template>
-                        <input type="radio" id="travel" name="hobby" value="travel">
+                        <input type="radio" id="travel" name="hobby" value="trip">
                         <label for="travel">여행</label>
-                        <input type="radio" id="sports" name="hobby" value="sports">
-                        <label for="sports">스포츠</label>
                         <input type="radio" id="music" name="hobby" value="music">
                         <label for="music">음악</label>
+                        <input type="radio" id="sports" name="hobby" value="sport">
+                        <label for="sports">스포츠</label>
                         <input type="radio" id="game" name="hobby" value="game">
                         <label for="game">게임</label>
-                        <input type="radio" id="alcohol" name="hobby" value="alcohol">
+                        <input type="radio" id="alcohol" name="hobby" value="drink">
                         <label for="alcohol">음주</label>
                         <input type="radio" id="culture" name="hobby" value="culture">
                         <label for="culture">문화생활</label>
                         <input type="radio" id="book" name="hobby" value="book">
                         <label for="book">독서</label>
-                        <input type="radio" id="etcHobby" name="hobby" value="etcHobby">
+                        <input type="radio" id="etcHobby" name="hobby" value="birth">
                         <label for="etcHobby">기타</label>
                     </template>
                 </li>
                 <li>
-                    <label for="high" class="price">{{high}} 만원 이하</label>
+                    <label for="price" class="price">{{high}} 만원 이하</label>
                     <div class="sliderWrap">
                         <span class="sliderBtn">
                         </span>
-                        <input name="high" id="high" type="range" min="0" max="100" v-model="high">
+                        <input name="price" id="price" type="range" min="0" max="100" v-model="high">
                     </div>
                 </li>
             </ul>
@@ -98,11 +92,13 @@
                         checkedArr.push(v.getAttribute('value'));
                     }
                 });
-                if(checkedArr.length<4) {
+                const price = document.getElementById('price');
+                checkedArr.push(price.value);
+                if(checkedArr.length<5) {
                     alert('모두 체크해주세요');
                     return;
                 }
-
+                console.log(checkedArr);
                 /*
                     체크한 내용을 보내는 내용
                 */

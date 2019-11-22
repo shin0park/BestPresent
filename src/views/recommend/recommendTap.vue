@@ -26,7 +26,6 @@
         methods: {
             updateItems(itemList) {
                 this.items = itemList;
-                console.log(this.items)
             }
         },
     }
