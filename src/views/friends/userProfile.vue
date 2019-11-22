@@ -118,15 +118,13 @@
             }
         },
         async mounted() {
-            const itemList = await this.$api.readPresent(this.email);
-            this.items = itemList;
+            this.items = await this.$api.readPresent(this.email);
             console.log(this.items);
         },
-        async updated() {
-            const itemList = await this.$api.readPresent(this.email);
-            this.items = itemList;
-            console.log("update");
-        }
+        // async beforeUpdate() {
+        //     console.log("before update");
+        //     this.items = await this.$api.readPresent(this.email);
+        // }
 
 
     }

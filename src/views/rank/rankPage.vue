@@ -16,13 +16,13 @@
       type: String
     },
     async created() {
-        // const itemList = await this.$api.readProducts('case', this.type);
-        this.items = itemList;
+        this.items = await this.$api.readProducts('case', this.type);
     },
-    async updated() {
-      // const itemList = await this.$api.readProducts('case', this.type);
-      this.items = itemList;
-    },
+    // async updated() {
+    //   console.log("rank rankpage");
+    //   // // const itemList = await this.$api.readProducts('case', this.type);
+    //   // this.items = itemList;
+    // },
     components: {
       'rankList': rankList
     }

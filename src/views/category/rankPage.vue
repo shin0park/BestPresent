@@ -16,13 +16,14 @@
             type: String
         },
         async created() {
-            // const itemList = await this.$api.readProducts('category', this.type);
-            this.items = itemList;
+            this.items = await this.$api.readProducts('category', this.type);
+
         },
-        async updated() {
-            // const itemList = await this.$api.readProducts('category', this.type);
-            this.items = itemList;
-        },
+        // async updated() {
+        //     console.log("rankpage update");
+        //     // // const itemList = await this.$api.readProducts('category', this.type);
+        //     // this.items = itemList;
+        // },
         components: {
             'rankList': rankList
         }
