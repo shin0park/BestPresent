@@ -108,6 +108,11 @@
         float: left;
         line-height: 40px;
     }
+    .clearBtn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
     .addFriend {
         float: right;
         height: 40px;

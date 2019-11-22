@@ -216,4 +216,10 @@
         font-size: 21px;
         font-weight: 900;
     }
+
+    .clearBtn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 </style>

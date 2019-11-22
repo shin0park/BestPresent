@@ -6,8 +6,9 @@
 
                     <div class="modal-header">
                         <slot name="header">
-                            default header
+
                         </slot>
+
                     </div>
 
                     <div class="modal-body">
@@ -103,6 +104,7 @@
     }
 
     .modal-container {
+        position: relative;
         width: 300px;
         margin: 0px auto;
         padding: 20px 30px;
@@ -155,5 +157,10 @@
     .modal-leave-active .modal-container {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
+    }
+    .clearBtn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
     }
 </style>
