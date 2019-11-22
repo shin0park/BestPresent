@@ -16,11 +16,11 @@
             type: String
         },
         async created() {
-            const itemList = await this.$api.readProducts('category', this.type);
+            // const itemList = await this.$api.readProducts('category', this.type);
             this.items = itemList;
         },
         async updated() {
-            const itemList = await this.$api.readProducts('category', this.type);
+            // const itemList = await this.$api.readProducts('category', this.type);
             this.items = itemList;
         },
         components: {

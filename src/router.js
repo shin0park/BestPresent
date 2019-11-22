@@ -15,7 +15,7 @@ import categoryPage from './views/category/categoryPage'
 Vue.use(VueRouter);
 //
 export default new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: [
         {
             name: 'mainTap',

@@ -1,6 +1,9 @@
 <template>
     <section class="categoryTap">
         <h1 class="title">원하는 카테고리로 찾아보세요.</h1>
+        <div class="adBox">
+            <img src="../../assets/ad3.png">
+        </div>
         <table class="tableWrapper">
             <tr>
                 <td @click="onClickCategory(0, 'clothes')">
@@ -447,6 +450,9 @@
                 </td>
             </tr>
         </table>
+        <div class="adBox">
+            <img src="../../assets/ad2.png">
+        </div>
     </section>
 </template>
 
@@ -509,5 +515,11 @@
     td:hover {
         font-size: 18px;
         transition: .5s;
+    }
+    .adBox {
+        margin: 20px 0;
+    }
+    .adBox img {
+        width: 100%;
     }
 </style>
