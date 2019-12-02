@@ -121,10 +121,10 @@
             this.items = await this.$api.readPresent(this.email);
             console.log(this.items);
         },
-        // async beforeUpdate() {
-        //     console.log("before update");
-        //     this.items = await this.$api.readPresent(this.email);
-        // }
+        async beforeUpdate() {
+            console.log("before update");
+            this.items = await this.$api.readPresent(this.email);
+        }
 
 
     }

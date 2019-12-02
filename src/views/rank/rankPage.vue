@@ -18,11 +18,9 @@
     async created() {
         this.items = await this.$api.readProducts('case', this.type);
     },
-    // async updated() {
-    //   console.log("rank rankpage");
-    //   // // const itemList = await this.$api.readProducts('case', this.type);
-    //   // this.items = itemList;
-    // },
+    async updated() {
+      this.items = await this.$api.readProducts('case', this.type);
+    },
     components: {
       'rankList': rankList
     }
